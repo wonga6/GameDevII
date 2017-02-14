@@ -6,8 +6,9 @@ using UnityEngine.Networking;
 public class playerController : NetworkBehaviour {
 
 	// Use this for initialization
-	void Start () {
-
+	public override void OnStartLocalPlayer () {
+		GetComponent<MeshRenderer> ().material.color = Color.blue;
+		transform.GetComponentInChildren<Camera> ().enabled = true;
 	}
 
 	// Update is called once per frame
