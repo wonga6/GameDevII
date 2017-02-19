@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4641551415149928}
   - component: {fileID: 33021671048911058}
-  - component: {fileID: 136605379519807792}
   - component: {fileID: 23426546389566774}
   - component: {fileID: 114569251819762200}
   - component: {fileID: 114985737292734002}
   - component: {fileID: 114679023881551948}
+  - component: {fileID: 65215036359163948}
   m_Layer: 0
   m_Name: TempPlayer
   m_TagString: Untagged
@@ -58,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ee1bb9621a7890a44b07bdc1c5d8a394, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,7 +82,19 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1140770028642820}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 838af5c30a74f5e42931fa056aeb4567, type: 3}
+--- !u!65 &65215036359163948
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1140770028642820}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114569251819762200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,6 +138,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1087df4644c4e41add9481494d75b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshes:
+  - {fileID: 4300000, guid: 838af5c30a74f5e42931fa056aeb4567, type: 3}
+  - {fileID: 4300000, guid: e7482dbe3fddbbf478c43eceabda09db, type: 3}
+  materials:
+  - {fileID: 2100000, guid: ee1bb9621a7890a44b07bdc1c5d8a394, type: 2}
+  - {fileID: 2100000, guid: af057c9d1881bc841b96b21177341992, type: 2}
 --- !u!114 &114985737292734002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,16 +164,3 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!136 &136605379519807792
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1140770028642820}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

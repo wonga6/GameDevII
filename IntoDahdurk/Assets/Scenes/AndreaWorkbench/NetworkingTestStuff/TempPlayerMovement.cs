@@ -5,12 +5,15 @@ using UnityEngine.Networking;
 
 public class TempPlayerMovement : NetworkBehaviour {
 
+	// PUBLIC FUNCTIONS
+	public Mesh[] meshes;
+	public Material[] materials;
+
 	// FUNCTIONS
 
 	#region Unity Functions
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame

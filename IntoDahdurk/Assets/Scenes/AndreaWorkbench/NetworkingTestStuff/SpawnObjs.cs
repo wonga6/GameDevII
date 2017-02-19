@@ -11,6 +11,7 @@ public class SpawnObjs : NetworkBehaviour {
 	// FUNCTIONS
 
 	#region Unity Functions
+	// override OnStartServer to spawn the object on the non-host client only
 	public override void OnStartServer () {
 		for(int i = 0; i < toSpawn.Length; i++) {
 			//GameObject obj = (GameObject)Instantiate(toSpawn[i]); - this line will spawn the object on server side
@@ -18,9 +19,11 @@ public class SpawnObjs : NetworkBehaviour {
 		}
 	}
 
-	// Update is called once per frame
-	void Update () {
-
+	// override OnStartClient to register the objects to spawn with the client
+	public override void OnStartClient() {
+		for(int i = 0; i < toSpawn.Length; i++) {
+			ClientScene.RegisterPrefab (toSpawn [i]);
+		}
 	}
 	#endregion
 }
