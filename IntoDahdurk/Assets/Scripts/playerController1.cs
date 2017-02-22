@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class playerController : NetworkBehaviour {
+public class playerController1 : NetworkBehaviour {
 
 	// Use this for initialization
 	public override void OnStartLocalPlayer () {
