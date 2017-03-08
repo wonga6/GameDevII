@@ -12,6 +12,7 @@ dolos_united: Ah, you’ve finally found your new companion. I was wondering whe
 
 
 dolos_maze_1: Can’t trust what you see, can you?
+
 dolos_maze_2: So you’ve made it to the maze, good for you. Try not to get turned around.
 
 
