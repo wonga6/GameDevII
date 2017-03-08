@@ -19547,13 +19547,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a1e9d771cdf6846b836a3d79823fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallPrefab: {fileID: 1744488904238904, guid: a2a4fb63fec809445b5a59a2e9fd7fb2, type: 2}
-  invisWallPrefab: {fileID: 1884912863974406, guid: 72a9d0d0c299c624f82e63b41709ad9b,
+  wallPrefab: {fileID: 1398977229995352, guid: 94a7c81151daa5e409065a0f826f6af5, type: 2}
+  invisWallPrefab: {fileID: 1918691808133534, guid: f9a478598728e1e41a6ff315dad7bc9f,
+    type: 2}
+  spawnObject: {fileID: 1911905174266176, guid: a2a4fb63fec809445b5a59a2e9fd7fb2,
     type: 2}
   wallPos:
-  - {x: 0, y: 0, z: 4}
-  - {x: -5, y: 0, z: -5}
-  invisWallPos: []
+  - {x: 115, y: 0, z: -75}
+  - {x: 135, y: 0, z: -65}
+  - {x: 165, y: 0, z: 15}
+  - {x: 95, y: 0, z: 5}
+  invisWallPos:
+  - {x: 115, y: 0, z: -25}
+  - {x: 155, y: 0, z: -45}
+  - {x: 175, y: 0, z: -75}
+  - {x: 95, y: 0, z: -75}
+  - {x: 155, y: 0, z: 25}
+  spawnPos: {x: 95, y: 0.5, z: -35}
 --- !u!114 &114161499163004378
 MonoBehaviour:
   m_ObjectHideFlags: 1
