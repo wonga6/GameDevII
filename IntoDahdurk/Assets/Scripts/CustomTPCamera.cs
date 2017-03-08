@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
 
 //Based on a tutorial on 3DBuzz: https://www.3dbuzz.com/training/view/3rd-person-character-system/simple-character-system
@@ -69,7 +68,7 @@ public class CustomTPCamera : MonoBehaviour {
 	//Calculates where the camera will be positioned in 3D space
 	void CalculateDesiredPosition()
 	{
-		Vector3 direction = new Vector3 (0f, 0f, -1f * distance);
+		Vector3 direction = new Vector3 (0f, 0f, distance);
 		Quaternion rotation = Quaternion.Euler (mouseY, mouseX, 0f); //mouseX is horizontal so it spins on the Y-axis; and vice versa
 		desiredPosition = TargetLookAt.position +rotation * direction;
 		

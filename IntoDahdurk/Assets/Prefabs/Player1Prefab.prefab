@@ -927,6 +927,9 @@ GameObject:
   - component: {fileID: 114682238951790606}
   - component: {fileID: 114752861257602664}
   - component: {fileID: 114154775531692284}
+  - component: {fileID: 114601672933035906}
+  - component: {fileID: 114014547687454396}
+  - component: {fileID: 114041253200765686}
   m_Layer: 0
   m_Name: Player1Prefab
   m_TagString: Untagged
@@ -2516,6 +2519,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114014547687454396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774998548970506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac1d4566c9dd4d408a4a2182408e0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114028145358981420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2535,6 +2549,23 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.3
+--- !u!114 &114041253200765686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774998548970506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a1e9d771cdf6846b836a3d79823fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallPrefab: {fileID: 1744488904238904, guid: a2a4fb63fec809445b5a59a2e9fd7fb2, type: 2}
+  invisWallPrefab: {fileID: 1884912863974406, guid: 72a9d0d0c299c624f82e63b41709ad9b,
+    type: 2}
+  wallPos:
+  - {x: 0, y: 0, z: 0}
+  invisWallPos: []
 --- !u!114 &114154775531692284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2547,7 +2578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 3
-  m_SendInterval: 0.07692308
+  m_SendInterval: 0.06666667
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
@@ -2555,6 +2586,25 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114601672933035906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774998548970506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95175270512153974}
+  m_ParameterSendBits: 63
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &114682238951790606
 MonoBehaviour:
   m_ObjectHideFlags: 1

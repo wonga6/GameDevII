@@ -342,6 +342,9 @@ GameObject:
   - component: {fileID: 114714056402721646}
   - component: {fileID: 114710976811513606}
   - component: {fileID: 114161499163004378}
+  - component: {fileID: 114114013855598054}
+  - component: {fileID: 114747569718299398}
+  - component: {fileID: 114137345131478686}
   m_Layer: 0
   m_Name: Player2Prefab
   m_TagString: Untagged
@@ -2516,6 +2519,43 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114114013855598054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1250378866770804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95463854359445440}
+  m_ParameterSendBits: 63
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
+--- !u!114 &114137345131478686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1250378866770804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a1e9d771cdf6846b836a3d79823fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallPrefab: {fileID: 1744488904238904, guid: a2a4fb63fec809445b5a59a2e9fd7fb2, type: 2}
+  invisWallPrefab: {fileID: 1884912863974406, guid: 72a9d0d0c299c624f82e63b41709ad9b,
+    type: 2}
+  wallPos:
+  - {x: 0, y: 0, z: 4}
+  - {x: -5, y: 0, z: -5}
+  invisWallPos: []
 --- !u!114 &114161499163004378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2528,7 +2568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 3
-  m_SendInterval: 0.07692308
+  m_SendInterval: 0.06666667
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
@@ -2601,6 +2641,17 @@ MonoBehaviour:
   cameraPrefab: {fileID: 1050167742106536, guid: f9fffc61131a8c14e8a60974b1db0715,
     type: 2}
   lookAt: {fileID: 4231555813351306}
+--- !u!114 &114747569718299398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1250378866770804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac1d4566c9dd4d408a4a2182408e0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136858278523661050
 CapsuleCollider:
   m_ObjectHideFlags: 1

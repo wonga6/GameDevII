@@ -17,6 +17,8 @@ public class CustomTPController : NetworkBehaviour {
 	private Vector3 m_CamForward;             // The current forward direction of the camera
 	private Vector3 m_Move;
 	private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
+	private Vector3 otherPos;
+	private DistortControl dc;
 
 
 	private void Start()
@@ -29,6 +31,7 @@ public class CustomTPController : NetworkBehaviour {
 			camera.transform.parent = this.transform;
 			m_Cam = camera.transform;
 			m_Cam.GetComponent<CustomTPCamera> ().TargetLookAt = lookAt;
+			dc = m_Cam.GetComponent<DistortControl> ();
 		}
 	}
 
@@ -37,12 +40,18 @@ public class CustomTPController : NetworkBehaviour {
 	{
 		if (isLocalPlayer) 
 		{
-			if (!m_Jump) {
+			if (!m_Jump) 
+			{
 				m_Jump = CrossPlatformInputManager.GetButtonDown ("Jump");
 			}
-		}
-	}
 
+			//increase distortion based on distance from other player
+			if (NetworkServer.connections.Count < 2) 
+			{
+				dc.UpdateDistance (0f);
+			}
+		} 
+	}
 
 	// Fixed update is called in sync with physics
 	private void FixedUpdate()
