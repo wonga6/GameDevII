@@ -36,7 +36,7 @@ public class CustomTPCamera : MonoBehaviour {
 
 
 	//Called after all other update functions are called
-	void LateUpdate ()
+	void FixedUpdate ()
 	{
 		Debug.Log ("Updating");
 		//if (isLocalPlayer) {

@@ -4219,6 +4219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4680500301854638}
   - component: {fileID: 95305755416996620}
+  - component: {fileID: 114019273817303194}
   m_Layer: 0
   m_Name: beni_shirtless_model_rig
   m_TagString: Untagged
@@ -19480,7 +19481,7 @@ Animator:
   m_GameObject: {fileID: 1424752085184922}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: bbbb17f954145ff468fb6ae9a4f5aa71, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 07694a03f382e5743811cee3a1b7c056, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -19505,6 +19506,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114019273817303194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424752085184922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6846b572276fef42b578265dbcc480f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114114013855598054
 MonoBehaviour:
   m_ObjectHideFlags: 1

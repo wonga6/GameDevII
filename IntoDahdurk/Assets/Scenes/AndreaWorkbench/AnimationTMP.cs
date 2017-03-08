@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class AnimationTMP : MonoBehaviour {
 
+	// PRIVATE VARIABLES
 	Animator anim;
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator>();
-
-		anim.Play("Walk");
+		anim.Play ("Walk");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 }
