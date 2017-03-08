@@ -1,0 +1,51 @@
+﻿Dolos:
+
+
+dolos_open: It seems as though more mortals have stumbled upon this tomb once again. You must be here for the Rosetta Stone that dwells in its depths. I, Dolos, am the keeper of the Stone. But...while you’re here, perhaps you can provide me with some...entertainment. The stage is set. There’s no escape, you must go forward. I won’t stop you, but I can’t promise something else won’t.
+You aren’t the first mortal to find this place. Maybe you’ll be the last...
+
+
+dolos_perception: Having a hard time getting around, huh? I figured it’d make things a lot more interesting. What can you trust if you can’t trust your own senses?
+
+
+dolos_united: Ah, you’ve finally found your new companion. I was wondering when you’d stumble upon each other. I can’t wait to see how this will go over for the two of you.
+
+
+dolos_maze_1: Can’t trust what you see, can you?
+dolos_maze_2: So you’ve made it to the maze, good for you. Try not to get turned around.
+
+
+
+
+Player Notes:
+
+
+note_1: 
+   * I don’t see us getting out of here anytime soon.
+   * That we can agree on.
+   * Stick together?
+   * For now, yeah. How long do you think he’ll let us write to each other?
+   * I don’t know…
+
+
+note_2:
+   * A maze?
+   * Who puts a maze in a tomb?
+   * Someone who likes to torture people.
+
+
+note_3:
+   * I’m not seeing a way through this.
+   * Really? It’s right there.
+   * I’m not crazy, I don’t see a way through.
+
+
+note_4:
+   * Guess we’ll have to put what we see together.
+   * It seems so.
+   * It’s like the worst puzzle I’ve ever put together.
+
+
+note_5:
+   * Can’t trust anything, can we?
+   * Apparently not.
