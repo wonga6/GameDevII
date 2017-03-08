@@ -7,9 +7,11 @@ public class BuildMaze : NetworkBehaviour {
 
 	public GameObject wallPrefab;
 	public GameObject invisWallPrefab;
+	public GameObject spawnObject;
 
 	public Vector3[] wallPos;
 	public Vector3[] invisWallPos;
+	public Vector3 spawnPos;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +26,8 @@ public class BuildMaze : NetworkBehaviour {
 			{
 				Instantiate (invisWallPrefab, invisWallPos [i], Quaternion.identity);
 			}
+
+			Instantiate (spawnObject, spawnPos, Quaternion.identity);
 		}
 	}
 
