@@ -19,6 +19,8 @@ public class NotePassing : MonoBehaviour {
 	public string path; // path to the place where the note text file is stored
 
 	// PRIVATE VARIABLES
+	private GameObject noteManager;
+
 	private List<string> notes; // the notes of the character
 	private int index; // the index of the current note
 
@@ -31,6 +33,12 @@ public class NotePassing : MonoBehaviour {
 	// FUNCTIONS
 
 	#region Unity Functions
+	// called before start
+	void Awake() {
+		noteManager = GameObject.Find ("NoteManager");
+		noteManager.GetComponent<NoteManager> ().addPlayer (gameObject);
+	}
+
 	// Use this for initialization
 	void Start () {
 		// get all the notes
@@ -49,51 +57,9 @@ public class NotePassing : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		// if the note is showing then start the wait and fade out
-		if(noteShowing) {
-			// count the time before beginning to fade the note
-			if(timeLeft < 0f && !fadeNote) {
-				fadeNote = true;
-			}
-			else {
-				timeLeft -= Time.deltaTime;
-			}
-
-			// start to fade the note
-			if(fadeNote) {
-				Color noteBackgroundColor = noteBackground.color;
-				Color noteTextColor = noteText.color;
-
-				// fade note until alpha channel is 0
-				if(noteBackgroundColor.a > 0f && noteTextColor.a > 0f) {
-					noteBackgroundColor.a = Mathf.Lerp(noteBackgroundColor.a, 0f, fadeRate*Time.deltaTime);
-					noteBackground.color = noteBackgroundColor;
-
-					noteTextColor.a = Mathf.Lerp(noteTextColor.a, 0f, fadeRate*Time.deltaTime);
-					noteText.color = noteTextColor;
-				}	
-
-				/* DEBUG STATEMENTS FOR FLOAT COMPARISON TO ALMOST ZERO
-				Debug.Log("note background: " + noteBackgroundColor.a);
-				Debug.Log("text: " + noteTextColor.a);
-				Debug.Log("EPSILON " + EPSILON);
-				*/
-
-				// once alpha channel is 0, note is no longer showing
-				if(noteBackgroundColor.a <= EPSILON && noteTextColor.a <= EPSILON) {
-					// reset the visibility variables
-					noteShowing = false;
-					fadeNote = false;
-					timeLeft = timeBeforeFade;
-
-					// increment the index
-					index++;
-				}
-			}
-
+		if(Input.GetKeyDown(KeyCode.T)) {
+			noteManager.GetComponent<NoteManager> ().setTrigger ();
 		}
-
 	}
 	#endregion
 
@@ -105,7 +71,12 @@ public class NotePassing : MonoBehaviour {
 
 		if(index < notes.Count) {
 			noteText.text = notes[index];	
+			StartCoroutine (fadeNoteOverTime ());
 		}
+	}
+
+	public bool getNoteShowing() {
+		return noteShowing;
 	}
 	#endregion
 
@@ -119,6 +90,53 @@ public class NotePassing : MonoBehaviour {
 		full = noteText.color;
 		full.a = visibility;
 		noteText.color = full;
+	}
+
+	// fade the note over time
+	private IEnumerator fadeNoteOverTime() {
+		while (true) {
+			// count the time before beginning to fade the note
+			if (timeLeft < 0f && !fadeNote) {
+				fadeNote = true;
+			} else {
+				yield return new WaitForSeconds (0.01f);
+				timeLeft -= Time.deltaTime;
+			}
+
+			// start to fade the note
+			if (fadeNote) {
+				Color noteBackgroundColor = noteBackground.color;
+				Color noteTextColor = noteText.color;
+
+				// fade note until alpha channel is 0
+				if (noteBackgroundColor.a > 0f && noteTextColor.a > 0f) {
+					noteBackgroundColor.a = Mathf.Lerp (noteBackgroundColor.a, 0f, fadeRate * Time.deltaTime);
+					noteBackground.color = noteBackgroundColor;
+
+					noteTextColor.a = Mathf.Lerp (noteTextColor.a, 0f, fadeRate * Time.deltaTime);
+					noteText.color = noteTextColor;
+				}	
+
+				/* DEBUG STATEMENTS FOR FLOAT COMPARISON TO ALMOST ZERO
+				Debug.Log("note background: " + noteBackgroundColor.a);
+				Debug.Log("text: " + noteTextColor.a);
+				Debug.Log("EPSILON " + EPSILON);
+				*/
+
+				// once alpha channel is 0, note is no longer showing
+				if (noteBackgroundColor.a <= EPSILON && noteTextColor.a <= EPSILON) {
+					// reset the visibility variables
+					noteShowing = false;
+					fadeNote = false;
+					timeLeft = timeBeforeFade;
+
+					// increment the index
+					index++;
+
+					break;
+				}
+			}
+		}
 	}
 
 	// read the notes from a file and store them in a list

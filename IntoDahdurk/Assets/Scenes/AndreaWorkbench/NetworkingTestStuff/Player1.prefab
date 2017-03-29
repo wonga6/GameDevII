@@ -229,7 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteBackground: {fileID: 114626917598519386}
   noteText: {fileID: 114288493793398594}
-  fadeRate: 4
+  fadeRate: 2
   timeBeforeFade: 3
   path: Assets/TextFiles/maia_textFile.txt
 --- !u!114 &114288493793398594
