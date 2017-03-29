@@ -5,9 +5,8 @@ using UnityEngine.Networking;
 
 public class TempPlayerMovement : NetworkBehaviour {
 
-	// PUBLIC FUNCTIONS
-	public Mesh[] meshes;
-	public Material[] materials;
+	// PUBLIC VARIABLES
+	public NotePassing nP;
 
 	// FUNCTIONS
 
@@ -20,6 +19,10 @@ public class TempPlayerMovement : NetworkBehaviour {
 	void Update () {
 		if(!isLocalPlayer) {
 			return;
+		}
+
+		if(Input.GetKeyDown(KeyCode.T)) {
+			nP.nextNote();
 		}
 
 		var x = Input.GetAxis("Horizontal")*0.1f;
