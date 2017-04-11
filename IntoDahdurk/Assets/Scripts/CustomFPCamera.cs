@@ -4,12 +4,10 @@ using UnityEngine;
 
 
 //Based on a tutorial on 3DBuzz: https://www.3dbuzz.com/training/view/3rd-person-character-system/simple-character-system
-public class CustomTPCamera : MonoBehaviour {
+public class CustomFPCamera : MonoBehaviour {
 	//PUBLIC VARIABLES
-	public Transform TargetLookAt; // point to look at in front of player
-	public Transform CameraPivot; //should be center of character mesh
 	//camera positioning offset
-	public float distance = 5f;
+	public Vector3 camPosition;
 	//sensitivity settings
 	public float mouseXSensitivity = 5f;
 	public float mouseYSensitivity = 5f;
@@ -30,32 +28,23 @@ public class CustomTPCamera : MonoBehaviour {
 	private float velX = 0f;
 	private float velY = 0f;
 	private float velZ = 0f;
-	private Vector3 position = Vector3.zero;
-	private Vector3 desiredPosition = Vector3.zero;
+	private Vector3 rotation = Vector3.zero;
+	private Vector3 desiredRotation = Vector3.zero;
 
 
 	// Use this for initialization
 	void Awake () 
 	{
-		Reset ();
 		UpdatePosition ();
-		Debug.Log ("created");
 	}
 
 
 	//Called after all other update functions are called
 	void FixedUpdate ()
 	{
-		Debug.Log ("Updating");
-		//if (isLocalPlayer) {
-			Debug.Log ("isclient");
-			if (TargetLookAt == null)
-				return;
-
-			HandlePlayerInput ();
-			CalculateDesiredPosition ();
-			UpdatePosition ();
-		//}
+		HandlePlayerInput ();
+		CalculateDesiredPosition ();
+		UpdatePosition ();
 	}
 
 
@@ -81,32 +70,28 @@ public class CustomTPCamera : MonoBehaviour {
 	//Calculates where the camera will be positioned in 3D space
 	void CalculateDesiredPosition()
 	{
-		Vector3 direction = new Vector3 (0f, 0f, distance);
-		Quaternion rotation = Quaternion.Euler (mouseY, mouseX, 0f); //mouseX is horizontal so it spins on the Y-axis; and vice versa
-		desiredPosition = TargetLookAt.position +rotation * direction;
-		
+
 	}
 
 	//update change in camera position
 	void UpdatePosition()
 	{
+		desiredRotation = new Vector3(-mouseY, mouseX, 0f); //mouseX is horizontal so it spins on the Y-axis; and vice versa
 		//interpolate between current position and desired position
-		float posX = Mathf.SmoothDamp (position.x, desiredPosition.x, ref velX, xSmooth);
-		float posY = Mathf.SmoothDamp (position.y, desiredPosition.y, ref velY, ySmooth);
-		float posZ = Mathf.SmoothDamp (position.z, desiredPosition.z, ref velZ, xSmooth);
+		float rotX = Mathf.SmoothDampAngle (rotation.x, desiredRotation.x, ref velX, xSmooth);
+		float rotY = Mathf.SmoothDampAngle (rotation.y, desiredRotation.y, ref velY, ySmooth);
+		float rotZ = Mathf.SmoothDampAngle (rotation.z, desiredRotation.z, ref velZ, xSmooth);
 		//put it together
-		position = new Vector3 (posX, posY, posZ);
-		transform.position = position;
-
-		//set camera to realign with TargetLookAt
-		transform.LookAt (TargetLookAt);
+		rotation = new Vector3(rotX, rotY, rotZ);
+		transform.eulerAngles = rotation;
 	}
 
 
 	//Called whenever camera must return to start distance
-	public void Reset()
+	public void setStart()
 	{
-		mouseX = 180f;
+		transform.position = transform.parent.position + camPosition;
+		mouseX = 0f;
 		mouseY = yStart;
 	}
 
