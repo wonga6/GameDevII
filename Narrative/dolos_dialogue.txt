@@ -1,5 +1,6 @@
 ﻿d_open_01:
 * It seems as though more mortals have stumbled upon this tomb once again. You must be here for the Rosetta Stone that dwells in its depths. I, Dolos, am the keeper of the Stone. While you’re here, perhaps you can provide me with some...entertainment. 
+
 d_open_02:
 * The stage is set. There’s no escape, you must go forward. I won’t stop you, but I can’t promise something else won’t. 
 
@@ -37,4 +38,4 @@ d_correct_stone:
 
 
 d_wrong_stone:
-* Ha, and here I thought you were a lot smarter than most mortals. But that’s fine, have fun with a fake Stone.
+* Ha, and here I thought you were a lot smarter than most mortals. But that’s fine, enjoy a useless Stone.
