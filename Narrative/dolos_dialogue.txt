@@ -1,0 +1,40 @@
+﻿d_open_01:
+* It seems as though more mortals have stumbled upon this tomb once again. You must be here for the Rosetta Stone that dwells in its depths. I, Dolos, am the keeper of the Stone. While you’re here, perhaps you can provide me with some...entertainment. 
+d_open_02:
+* The stage is set. There’s no escape, you must go forward. I won’t stop you, but I can’t promise something else won’t. 
+
+
+d_interject_01:
+* You aren’t the first mortal to find this place. Maybe you’ll be the last...
+
+
+d_altered_percep: 
+* Having a hard time getting around, huh? I figured it’d make things a lot more interesting. What can you trust if you can’t trust your own senses?
+
+
+d_united:
+* Ah, you’ve finally found your new companion. I was wondering when you’d stumble upon each other. I can’t wait to see how this will go over for the two of you.
+
+
+d_maze:
+* So you’ve made it to the maze, good for you. Try not to get turned around.
+
+
+d_minotaur_intro:
+* I’m sure you realize you’re not the only ones in this maze. Careful around the Minotaur. It’s not what you’d call...friendly.
+
+
+d_ending_01:
+* You’ve done well. I’m impressed. But consider this the final act of your performance. Before you stands the Rosetta Stone you seek and a copy that I’ve created. The craftsmanship is impeccable, if I do say so myself. 
+
+
+d_ending_02:
+* You can only choose one of the Stones to take with you. But caution mortals, the replica may look real, but the markings won’t translate anything. Whichever one you don’t choose, I’m going to destroy. Best of luck.
+
+
+d_correct_stone:
+* Ha, so you saw through my ruse. You know, you’re a lot smarter than most mortals that end up in here.
+
+
+d_wrong_stone:
+* Ha, and here I thought you were a lot smarter than most mortals. But that’s fine, have fun with a fake Stone.
