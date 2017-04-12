@@ -1,61 +1,46 @@
-﻿-Beni writing, Maia writing
-
-
-1. n_united:
+n_united:
    * I don’t see us getting out of here anytime soon.
    * That we can agree on.
    * Stick together?
-   * For now, yeah. How long do you think he’ll let us write to each other?
-   * I don’t know…
+   * For now, yeah.
 
-
-1. n_reach_maze:
+n_reach_maze:
    * A maze?
    * Who puts a maze in a tomb?
    * Someone who likes to torture people.
 
+n_maze_1:
+   * I’m not seeing a way through this.
+   * Really? It’s right there.
+   * I’m not crazy, I don’t see a way through.
 
-1. n_minotaur_approach:
+n_maze_2:
+   * Guess we’ll have to put what we see together.
+   * It seems so. Can’t anything be simple?
+   * That’d be asking too much.
+
+n_minotaur_approach:
    * Did you hear that?
    * I didn’t hear anything.
 
-
-1. n_minotaur:
+n_minotaur:
    * What was that?
    * Some big hulking beast.
    * Should stay clear of it.
    * Well, I don’t intend to go say “hello”..
 
-
-1. n_minotaur_avoided:
+n_minotaur_avoided:
    * Think we lost that thing?
    * I wouldn’t bank on it.
 
-
-1. n_maze_1:
-   * I’m not seeing a way through this.
-   * Really? It’s right there.
-   * I’m not crazy, I don’t see a way through.
-
-
-1. n_maze_2:
-   * Guess we’ll have to put what we see together.
-   * It seems so. Can’t anything be simple?
-   * That’d be asking too much.
-
-
-1. n_maze_3:
+n_maze_3:
    * Think we’ll ever get out of here?
    * Fingers crossed…
 
-
-
-
-1. n_maze_end:
+n_maze_end:
    * Thank God.
    * Not yet. Who knows if there’s more waiting for us.
 
-
-1. n_choose:
+n_choose:
    * Which one should we pick?
    * Honestly, I don’t know.
