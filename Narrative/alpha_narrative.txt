@@ -10,10 +10,10 @@ dolos_perception: Having a hard time getting around, huh? I figured it’d make 
 
 dolos_united: Ah, you’ve finally found your new companion. I was wondering when you’d stumble upon each other. I can’t wait to see how this will go over for the two of you.
 
+dolos_maze_1: So you’ve made it to the maze, good for you. Try not to get turned around.
 
-dolos_maze_1: Can’t trust what you see, can you?
+dolos_maze_2: Can’t trust what you see, can you?
 
-dolos_maze_2: So you’ve made it to the maze, good for you. Try not to get turned around.
 
 
 
@@ -21,7 +21,7 @@ dolos_maze_2: So you’ve made it to the maze, good for you. Try not to get turn
 Player Notes:
 
 
-note_1: 
+note_players_united: 
    * I don’t see us getting out of here anytime soon.
    * That we can agree on.
    * Stick together?
@@ -29,24 +29,24 @@ note_1:
    * I don’t know…
 
 
-note_2:
+note_reach_maze:
    * A maze?
    * Who puts a maze in a tomb?
    * Someone who likes to torture people.
 
 
-note_3:
+note_maze_1:
    * I’m not seeing a way through this.
    * Really? It’s right there.
    * I’m not crazy, I don’t see a way through.
 
 
-note_4:
+note_maze_2:
    * Guess we’ll have to put what we see together.
    * It seems so.
    * It’s like the worst puzzle I’ve ever put together.
 
 
-note_5:
+note_after_maze:
    * Can’t trust anything, can we?
    * Apparently not.
