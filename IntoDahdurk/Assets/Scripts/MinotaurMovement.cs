@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MinotaurMovement: MonoBehaviour {
 
 	// PUBLIC VARIABLES
 
 	// path follow variables (public)
-	public Transform[] path;
+	public List<Transform> path;
 	public float pathOffset; // distance ahead to look for target
 	public float pathPntRad = 1.0f; // distance from path pt at which
 	                                // pt can be considered reached
@@ -28,7 +29,10 @@ public class MinotaurMovement: MonoBehaviour {
 	#region Unity Functions
 	// Use this for initialization
 	void Start () {
-		
+		// get the path to follow
+		GameObject pathParent = GameObject.FindGameObjectWithTag ("AI_Path");
+
+		path = pathParent.transform.Cast<Transform> ().ToList ();
 	}
 	
 	// Update is called once per frame
@@ -42,7 +46,7 @@ public class MinotaurMovement: MonoBehaviour {
 		if(dir.magnitude <= pathPntRad) {
 			currentNode++;
 
-			if (currentNode >= path.Length) {
+			if (currentNode >= path.Count) {
 				currentNode = 0;
 			}
 		}
@@ -56,7 +60,7 @@ public class MinotaurMovement: MonoBehaviour {
 	}
 
 	void OnDrawGizmos() {
-		for(int i = 0; i < path.Length; i++) {
+		for(int i = 0; i < path.Count; i++) {
 			if(path[i] != null) {
 				Gizmos.DrawSphere(path[i].position, pathPntRad);
 			}
@@ -81,6 +85,8 @@ public class MinotaurMovement: MonoBehaviour {
 		Vector3 direction = path[targetIndex].position - transform.position;
 		transform.position += Vector3.Normalize (direction) * Time.deltaTime * speed;
 
+		transform.rotation = Quaternion.LookRotation (direction.normalized);
+
 		if(direction.magnitude <= pathPntRad) {
 			currentNode = targetIndex;
 		}
@@ -92,7 +98,7 @@ public class MinotaurMovement: MonoBehaviour {
 		float minDist = float.MaxValue;
 
 		// loop and find closes node to the 
-		for(int i = 0; i < path.Length; i++) {
+		for(int i = 0; i < path.Count; i++) {
 			float dist = Vector3.Distance(path[i].position, position);
 			if(dist < minDist && i != currentNode) {
 				closestIndex = i;
