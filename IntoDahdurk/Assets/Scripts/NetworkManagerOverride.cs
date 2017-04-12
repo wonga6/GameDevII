@@ -12,7 +12,6 @@ public class NetworkManagerOverride : NetworkManager
 	public int chosenPrefab = 0;
 	public GameObject[] playerPrefabs;
 	public Vector3[] playerStartPos;
-	public GameObject maze;
 
 	// PRIVATE VARIABLES
 	int index = 0; // index for which gameobject from plaerPrefabs array to spawn
@@ -33,7 +32,6 @@ public class NetworkManagerOverride : NetworkManager
 	public void Awake()
 	{
 		this.maxConnections = 2;
-		bm = maze.GetComponent<BuildMaze> ();
 	}
 
 	// override network manager's OnServerAddPlayer so that multiple player prefabs can be added
