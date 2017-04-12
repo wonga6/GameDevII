@@ -6,15 +6,23 @@ using UnityEngine;
 //Based on a tutorial on 3DBuzz: https://www.3dbuzz.com/training/view/3rd-person-character-system/simple-character-system
 public class CustomTPCamera : MonoBehaviour {
 	//PUBLIC VARIABLES
-	public Transform TargetLookAt; // initially set to body mesh of character
+	public Transform TargetLookAt; // point to look at in front of player
+	public Transform CameraPivot; //should be center of character mesh
+	//camera positioning offset
 	public float distance = 5f;
+	//sensitivity settings
 	public float mouseXSensitivity = 5f;
 	public float mouseYSensitivity = 5f;
+	public float joystickXSensitivity = 5f;
+	public float joystickYSensitivity = 5f;
+	//for smoothing camera motion
 	public float xSmooth = 0.05f;
 	public float ySmooth = 0.1f;
+	//limits for vertical camera motion
+	public float yStart = 0f;
 	public float yMax = 80f;
 	public float yMin = -40f;
-	public static float deadzone = 0.1f;
+	//public static float deadzone = 0.1f;
 
 	//PRIVATE VARIABLES
 	private float mouseX = 0f;
@@ -36,7 +44,7 @@ public class CustomTPCamera : MonoBehaviour {
 
 
 	//Called after all other update functions are called
-	void LateUpdate ()
+	void FixedUpdate ()
 	{
 		Debug.Log ("Updating");
 		//if (isLocalPlayer) {
@@ -56,10 +64,15 @@ public class CustomTPCamera : MonoBehaviour {
 	//mouseY - vertical positioning of camera, bounded in a certain range
 	void HandlePlayerInput()
 	{
-		//get mouse input
-		mouseX += Input.GetAxis("Mouse X") * mouseXSensitivity;
-		mouseY += Input.GetAxis ("Mouse Y") * mouseYSensitivity;
-
+		//get mouse input on click OR joystick input
+		if (Input.GetMouseButton(0) && (Mathf.Abs(Input.GetAxis ("Mouse X")) > 0f || Mathf.Abs(Input.GetAxis ("Mouse Y")) >0f)) {
+			mouseX += Input.GetAxis ("Mouse X") * mouseXSensitivity;
+			mouseY += Input.GetAxis ("Mouse Y") * mouseYSensitivity;
+		} else if (Mathf.Abs(Input.GetAxis ("CameraX")) > 0f || Mathf.Abs(Input.GetAxis ("CameraY")) >0f) 
+		{
+			mouseX += Input.GetAxis ("CameraX") * joystickXSensitivity;
+			mouseY += Input.GetAxis ("CameraY") * joystickYSensitivity;
+		}
 		//clamp mouseY rotation
 		mouseY = ClampAngle(mouseY, yMin, yMax);
 	}
@@ -93,8 +106,8 @@ public class CustomTPCamera : MonoBehaviour {
 	//Called whenever camera must return to start distance
 	public void Reset()
 	{
-		mouseX = 0f;
-		mouseY = 10f;
+		mouseX = 180f;
+		mouseY = yStart;
 	}
 
 	//keeps rotation input between 360 and -360 degrees
