@@ -10,9 +10,10 @@ public class CustomTPController : NetworkBehaviour {
 	//PUBLIC VARIABLES
 	public GameObject cameraPrefab;
 	public Transform lookAt;
+	public float walkMultiplier;
 
 	//PRIVATE VARIABLES
-	private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
+	CustomTPCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
 	private Transform m_Cam;                  // A reference to the main camera in the scenes transform
 	private Vector3 m_CamForward;             // The current forward direction of the camera
 	private Vector3 m_Move;
@@ -24,7 +25,7 @@ public class CustomTPController : NetworkBehaviour {
 	private void Start()
 	{
 		// get the third person character ( this should never be null due to require component )
-		m_Character = GetComponent<ThirdPersonCharacter>();
+		m_Character = GetComponent<CustomTPCharacter>();
 		if (isLocalPlayer) 
 		{
 			GameObject camera = (GameObject) Instantiate(cameraPrefab, this.transform.position, Quaternion.identity);
@@ -73,8 +74,10 @@ public class CustomTPController : NetworkBehaviour {
 			}
 			#if !MOBILE_INPUT
 			// walk speed multiplier
-			if (Input.GetKey (KeyCode.LeftShift))
-				m_Move *= 0.5f;
+			if (!Input.GetButton ("Sprint")) 
+			{
+				m_Move *= walkMultiplier;
+			}
 			#endif
 
 			// pass all parameters to the character control script
