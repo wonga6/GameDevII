@@ -13388,7 +13388,7 @@ GameObject:
   - component: {fileID: 900139180}
   - component: {fileID: 900139179}
   m_Layer: 0
-  m_Name: Ground (1)
+  m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30054,7 +30054,6 @@ MonoBehaviour:
   playerStartPos:
   - {x: -25.5, y: 0, z: 64.5}
   - {x: -25.5, y: 0, z: 46.5}
-  maze: {fileID: 0}
 --- !u!4 &2103148463
 Transform:
   m_ObjectHideFlags: 0

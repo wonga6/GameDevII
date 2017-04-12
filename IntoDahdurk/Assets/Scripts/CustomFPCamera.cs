@@ -54,7 +54,7 @@ public class CustomFPCamera : MonoBehaviour {
 	void HandlePlayerInput()
 	{
 		//get mouse input on click OR joystick input
-		if (Input.GetMouseButton(0) && (Mathf.Abs(Input.GetAxis ("Mouse X")) > 0f || Mathf.Abs(Input.GetAxis ("Mouse Y")) >0f)) {
+		if (Input.GetMouseButton(1) && (Mathf.Abs(Input.GetAxis ("Mouse X")) > 0f || Mathf.Abs(Input.GetAxis ("Mouse Y")) >0f)) {
 			mouseX += Input.GetAxis ("Mouse X") * mouseXSensitivity;
 			mouseY += Input.GetAxis ("Mouse Y") * mouseYSensitivity;
 		} else if (Mathf.Abs(Input.GetAxis ("CameraX")) > 0f || Mathf.Abs(Input.GetAxis ("CameraY")) >0f) 
