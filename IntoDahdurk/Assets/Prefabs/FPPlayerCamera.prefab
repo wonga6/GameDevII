@@ -165,7 +165,7 @@ MonoBehaviour:
   xSmooth: 0.05
   ySmooth: 0.05
   yStart: -15
-  yMax: 10
+  yMax: 15
   yMin: -70
 --- !u!114 &114718266318557486
 MonoBehaviour:
