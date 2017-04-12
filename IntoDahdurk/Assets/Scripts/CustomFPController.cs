@@ -5,11 +5,11 @@ using UnityEngine.Networking;
 using UnityStandardAssets.Characters.ThirdPerson;
 using UnityStandardAssets.CrossPlatformInput;
 
-//Based on Standard Assets ThirdPersonUSerControl, made network aware
-public class CustomTPController : NetworkBehaviour {
+//Based on Standard Assets ThirdPersonUSerControl, made network aware, and hijacked for First Person
+public class CustomFPController : NetworkBehaviour {
 	//PUBLIC VARIABLES
 	public GameObject cameraPrefab;
-	public Transform lookAt;
+	public GameObject characterMesh;
 	public float walkMultiplier;
 
 	//PRIVATE VARIABLES
@@ -28,10 +28,16 @@ public class CustomTPController : NetworkBehaviour {
 		m_Character = GetComponent<CustomTPCharacter>();
 		if (isLocalPlayer) 
 		{
+			//create camera for player
 			GameObject camera = (GameObject) Instantiate(cameraPrefab, this.transform.position, Quaternion.identity);
 			camera.transform.parent = this.transform;
 			m_Cam = camera.transform;
-			m_Cam.GetComponent<CustomTPCamera> ().TargetLookAt = lookAt;
+			m_Cam.gameObject.GetComponent<CustomFPCamera> ().setStart ();
+
+			//Disable this character's mesh, so it doesn't interfere with camera
+			characterMesh.SetActive(false);
+
+
 			dc = m_Cam.GetComponent<DistortControl> ();
 		}
 	}
@@ -45,7 +51,7 @@ public class CustomTPController : NetworkBehaviour {
 			{
 				m_Jump = CrossPlatformInputManager.GetButtonDown ("Jump");
 			}
-
+				
 			//increase distortion based on distance from other player
 			if (NetworkServer.connections.Count < 2) 
 			{
@@ -53,6 +59,7 @@ public class CustomTPController : NetworkBehaviour {
 			}
 		} 
 	}
+
 
 	// Fixed update is called in sync with physics
 	private void FixedUpdate()
@@ -86,3 +93,4 @@ public class CustomTPController : NetworkBehaviour {
 		}
 	}
 }
+
