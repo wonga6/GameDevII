@@ -12,6 +12,8 @@ public class MinotaurMovement: MonoBehaviour {
 	public float pathPntRad = 1.0f; // distance from path pt at which
 	                                // pt can be considered reached
 
+	public float speed = 5.0f;
+
 	// chasing player variables (public)
 	public List<GameObject> players;
 
@@ -31,6 +33,25 @@ public class MinotaurMovement: MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		/*
+		 * Working pathfinding if my implementation doesn't work as expected to
+		Vector3 dir = path [currentNode].position - transform.position;
+
+		transform.position += Vector3.Normalize(dir) * Time.deltaTime * speed;
+
+		if(dir.magnitude <= pathPntRad) {
+			currentNode++;
+
+			if (currentNode >= path.Length) {
+				currentNode = 0;
+			}
+		}
+		*/
+
+		pathFinding ();
+	}
+
+	void OnTriggerEnter(Collider col) {
 		
 	}
 
@@ -47,12 +68,22 @@ public class MinotaurMovement: MonoBehaviour {
 	// path finding function
 	private void pathFinding() {
 		// find current position in relation to nodes of path
+		Vector3 currentPosition = path[currentNode].position;
 
 		// offset current position
+		currentPosition.x += pathOffset;
+		currentPosition.z += pathOffset;
 
 		// find target position - closes path node to offset position
+		int targetIndex = findPathNode(currentPosition);
 
 		// seek target position
+		Vector3 direction = path[targetIndex].position - transform.position;
+		transform.position += Vector3.Normalize (direction) * Time.deltaTime * speed;
+
+		if(direction.magnitude <= pathPntRad) {
+			currentNode = targetIndex;
+		}
 	}
 
 	// find the closest node on the path
