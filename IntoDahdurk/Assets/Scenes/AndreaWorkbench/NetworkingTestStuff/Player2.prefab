@@ -331,7 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteBackground: {fileID: 114934102909601018}
   noteText: {fileID: 114338826754803242}
-  fadeRate: 4
+  fadeRate: 2
   timeBeforeFade: 3
   path: Assets/TextFiles/benni_textFile.txt
 --- !u!114 &114934102909601018
