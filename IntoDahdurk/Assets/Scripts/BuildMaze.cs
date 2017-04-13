@@ -6,28 +6,17 @@ using UnityEngine.Networking;
 public class BuildMaze : NetworkBehaviour {
 
 	public GameObject wallPrefab;
-	public GameObject invisWallPrefab;
-	public GameObject spawnObject;
 
-	public Vector3[] wallPos;
-	public Vector3[] invisWallPos;
-	public Vector3 spawnPos;
-
+	public Vector3[] wallPositions;
+	public float[] WallRotations;
 	// Use this for initialization
 	void Start () {
 		if (isLocalPlayer) 
 		{
-			for (int i = 0; i < wallPos.Length; i++) 
+			for (int i = 0; i < wallPositions.Length; i++) 
 			{
-				Instantiate (wallPrefab, wallPos [i], Quaternion.identity);
+				Instantiate (wallPrefab, wallPositions [i], Quaternion.Euler(0f, WallRotations[i], 0f));
 			}
-
-			for (int i = 0; i < invisWallPos.Length; i++) 
-			{
-				Instantiate (invisWallPrefab, invisWallPos [i], Quaternion.identity);
-			}
-
-			Instantiate (spawnObject, spawnPos, Quaternion.identity);
 		}
 	}
 
