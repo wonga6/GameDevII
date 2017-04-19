@@ -65,7 +65,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -132,11 +132,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetLookAt: {fileID: 0}
-  distance: 1.25
-  mouseXSensitivity: 5
-  mouseYSensitivity: 5
+  CameraPivot: {fileID: 0}
+  distance: 1.5
+  mouseXSensitivity: 7
+  mouseYSensitivity: 7
+  joystickXSensitivity: 5
+  joystickYSensitivity: 5
   xSmooth: 0.05
-  ySmooth: 0.1
+  ySmooth: 0.05
+  yStart: -15
   yMax: 10
   yMin: -70
 --- !u!114 &114230264571831786
