@@ -19,9 +19,12 @@ public class WallBehavior : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
+		Debug.Log ("trigger");
 		if (other.gameObject.tag == "Player") {
-			AudioSource.PlayClipAtPoint (crossSound, transform.position);
-			Instantiate (poof, this.transform);
+			Debug.Log ("isPlayer");
+			if(crossSound != null)
+				AudioSource.PlayClipAtPoint (crossSound, transform.position);
+			Instantiate (poof, this.transform, false);
 		}
 	}
 }
