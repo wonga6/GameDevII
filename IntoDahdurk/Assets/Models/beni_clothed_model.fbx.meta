@@ -1,0 +1,131 @@
+fileFormatVersion: 2
+guid: 497f03159262faa4580dee7d799d02c5
+timeCreated: 1492201132
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: bandana1
+    100002: belt1
+    100004: //RootNode
+    100006: beni_eyebrow009Mesh
+    100008: beni_high-polyMesh
+    100010: beni_male1591Mesh
+    100012: beni_short01Mesh
+    100014: boot_base2
+    100016: pants
+    100018: polySurface2
+    100020: polySurface4
+    100022: shirt2
+    100024: watch_band1
+    400000: bandana1
+    400002: belt1
+    400004: //RootNode
+    400006: beni_eyebrow009Mesh
+    400008: beni_high-polyMesh
+    400010: beni_male1591Mesh
+    400012: beni_short01Mesh
+    400014: boot_base2
+    400016: pants
+    400018: polySurface2
+    400020: polySurface4
+    400022: shirt2
+    400024: watch_band1
+    2300000: bandana1
+    2300002: belt1
+    2300004: beni_eyebrow009Mesh
+    2300006: beni_high-polyMesh
+    2300008: beni_short01Mesh
+    2300010: boot_base2
+    2300012: pants
+    2300014: polySurface4
+    2300016: shirt2
+    2300018: watch_band1
+    3300000: bandana1
+    3300002: belt1
+    3300004: beni_eyebrow009Mesh
+    3300006: beni_high-polyMesh
+    3300008: beni_short01Mesh
+    3300010: boot_base2
+    3300012: pants
+    3300014: polySurface4
+    3300016: shirt2
+    3300018: watch_band1
+    4300000: polySurface4
+    4300002: beni_short01Mesh
+    4300004: pants
+    4300006: beni_high-polyMesh
+    4300008: beni_eyebrow009Mesh
+    4300010: belt1
+    4300012: shirt2
+    4300014: bandana1
+    4300016: watch_band1
+    4300018: boot_base2
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

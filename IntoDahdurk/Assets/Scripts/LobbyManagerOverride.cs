@@ -1,13 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.NetworkSystem;
 
-// copied from: https://forum.unity3d.com/threads/using-multiple-player-prefabs-with-the-network-manager.438930/
+// custom NetworkLobbyManager class to allow multiple player prefabs to be spawned
+public class LobbyManagerOverride : NetworkLobbyManager {
 
-// custom NetworkManager class to allow multiple player prefabs to be spawned
-// spawning of objects that arent' the players' now controlled by SpawnObjs.cs
-public class NetworkManagerOverride : NetworkManager
-{
 	// PUBLIC VARIABLES
 	public int chosenPrefab = 0;
 	public GameObject[] playerPrefabs;
@@ -23,13 +22,8 @@ public class NetworkManagerOverride : NetworkManager
 		public int chosenClass;
 	}
 
-	// FUNCTIONS
-
-	#region Unity Functions
-
-	//When game starts, set max players to 2
-	public void Awake()
-	{
+	// Use this for initialization
+	void Awake () {
 		this.maxConnections = 2;
 	}
 
@@ -72,5 +66,10 @@ public class NetworkManagerOverride : NetworkManager
 	{
 		//base.OnClientSceneChanged(conn);
 	}
-	#endregion
+
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
 }

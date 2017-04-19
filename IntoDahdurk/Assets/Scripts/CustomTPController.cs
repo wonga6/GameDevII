@@ -63,6 +63,8 @@ public class CustomTPController : NetworkBehaviour {
 			float v = CrossPlatformInputManager.GetAxis ("Vertical");
 			bool crouch = Input.GetKey (KeyCode.C);
 
+			Debug.Log (h + ", " + v);
+
 			// calculate move direction to pass to character
 			if (m_Cam != null) {
 				// calculate camera relative direction to move:

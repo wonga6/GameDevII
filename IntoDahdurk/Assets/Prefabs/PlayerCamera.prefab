@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetLookAt: {fileID: 0}
   CameraPivot: {fileID: 0}
-  distance: 1.5
+  distance: 1.2
   mouseXSensitivity: 7
   mouseYSensitivity: 7
   joystickXSensitivity: 5
@@ -141,7 +141,7 @@ MonoBehaviour:
   xSmooth: 0.05
   ySmooth: 0.05
   yStart: -15
-  yMax: 10
+  yMax: 5
   yMin: -70
 --- !u!114 &114230264571831786
 MonoBehaviour:
