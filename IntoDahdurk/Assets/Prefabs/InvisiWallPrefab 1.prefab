@@ -104,5 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89413b8096d20542bcaa42be778da25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crossSound: {fileID: 0}
-  poof: {fileID: 1728043051381128, guid: a7b0c5c96f3867e4ab8f93990cb082a9, type: 2}
+  crossSound: {fileID: 8300000, guid: f2f243429ebba824da44d70c411e4233, type: 3}
+  poof: {fileID: 1269770764867250, guid: c442adb73b63a9440902cccdcc96c9dc, type: 2}
+  poofLifetime: 2
