@@ -6,6 +6,7 @@ TagManager:
   tags:
   - body
   - AI_Path
+  - FakeWalls
   layers:
   - Default
   - TransparentFX

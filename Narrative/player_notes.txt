@@ -2,22 +2,11 @@ n_united:
    * I don’t see us getting out of here anytime soon.
    * That we can agree on.
    * Stick together?
-   * For now, yeah.
+   * For now, yeah. 
 
-n_reach_maze:
-   * A maze?
+n_maze_0:
    * Who puts a maze in a tomb?
    * Someone who likes to torture people.
-
-n_maze_1:
-   * I’m not seeing a way through this.
-   * Really? It’s right there.
-   * I’m not crazy, I don’t see a way through.
-
-n_maze_2:
-   * Guess we’ll have to put what we see together.
-   * It seems so. Can’t anything be simple?
-   * That’d be asking too much.
 
 n_minotaur_approach:
    * Did you hear that?
@@ -33,6 +22,16 @@ n_minotaur_avoided:
    * Think we lost that thing?
    * I wouldn’t bank on it.
 
+n_maze_1:
+   * I’m not seeing a way through this.
+   * Really? It’s right there.
+   * I’m not crazy, I don’t see a way through.
+
+n_maze_2:
+   * Guess we’ll have to put what we see together.
+   * It seems so. Can’t anything be simple?
+   * That’d be asking too much.
+
 n_maze_3:
    * Think we’ll ever get out of here?
    * Fingers crossed…
@@ -41,6 +40,6 @@ n_maze_end:
    * Thank God.
    * Not yet. Who knows if there’s more waiting for us.
 
-n_choose:
+1. n_choose:
    * Which one should we pick?
    * Honestly, I don’t know.

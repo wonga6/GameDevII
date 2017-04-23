@@ -11248,7 +11248,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1615716221013518}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -19521,6 +19521,7 @@ MonoBehaviour:
     type: 2}
   lookAt: {fileID: 4422198063400774}
   walkMultiplier: 0.75
+  playerIndex: 1
 --- !u!114 &114068759722559886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19577,56 +19578,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1611743173199882}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9a1e9d771cdf6846b836a3d79823fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wallPrefab: {fileID: 1636526276396860, guid: 08f0e5ac90ef647469f54c7f343baf77, type: 2}
-  wallPositions:
-  - {x: 12.125, y: 1.5, z: 67.5}
-  - {x: 14.875, y: 1.5, z: 76.5}
-  - {x: 18.125, y: 1.5, z: 76.5}
-  - {x: 28.5, y: 1.5, z: 48.125}
-  - {x: 28.5, y: 1.5, z: 44.875}
-  - {x: 34.5, y: 1.5, z: 20.875}
-  - {x: 88.5, y: 1.5, z: 26.875}
-  - {x: 58.5, y: 1.5, z: 83.875}
-  - {x: 39.125, y: 1.5, z: 73.5}
-  - {x: 57.125, y: 1.5, z: 67.5}
-  - {x: 48.125, y: 1.5, z: 28.5}
-  - {x: 6.125, y: 1.5, z: 37.5}
-  - {x: 17.875, y: 1.5, z: 10.5}
-  - {x: 21.125, y: 1.5, z: 13.5}
-  - {x: 49.125, y: 1.5, z: 79.5}
-  - {x: 84.125, y: 1.5, z: 88.5}
-  - {x: 86.875, y: 1.5, z: 67.5}
-  - {x: 81.125, y: 1.5, z: 34.5}
-  - {x: 74.875, y: 1.5, z: 10.5}
-  - {x: 78.125, y: 1.5, z: 4.5}
-  - {x: 90.125, y: 1.5, z: 10.5}
-  WallRotations:
-  - 90
-  - 90
-  - 90
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
+  invisiWallPrefab: {fileID: 0}
+  Player1WallPos: []
+  Player1WallRots: []
+  Player2WallPos: []
+  Player2WallRots: []
 --- !u!114 &114741718940616310
 MonoBehaviour:
   m_ObjectHideFlags: 1

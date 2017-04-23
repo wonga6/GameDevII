@@ -12,6 +12,7 @@ public class NetworkManagerOverride : NetworkManager
 	public int chosenPrefab = 0;
 	public GameObject[] playerPrefabs;
 	public Vector3[] playerStartPos;
+	//public BuildMaze bm;
 
 	// PRIVATE VARIABLES
 	int index = 0; // index for which gameobject from plaerPrefabs array to spawn
@@ -41,6 +42,7 @@ public class NetworkManagerOverride : NetworkManager
 
 		//spawn player at start position based on index #
 		player = Instantiate(playerPrefabs[index], playerStartPos[index], Quaternion.identity) as GameObject;
+		//bm.SetWalls (index);
 		// add player to server
 		NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
 
