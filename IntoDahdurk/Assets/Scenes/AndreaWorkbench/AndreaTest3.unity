@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -30123,14 +30123,14 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 1915649449028830, guid: fae16ff7e746e434a8e15d33e9b6479a,
+  m_PlayerPrefab: {fileID: 1915649449028830, guid: b31879fbbeb440347ba34c0ff9f26b54,
     type: 2}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
   m_OfflineScene: 
   m_OnlineScene: 
   m_SpawnPrefabs:
-  - {fileID: 1915649449028830, guid: fae16ff7e746e434a8e15d33e9b6479a, type: 2}
+  - {fileID: 1915649449028830, guid: b31879fbbeb440347ba34c0ff9f26b54, type: 2}
   - {fileID: 1611743173199882, guid: 0c88f0ddaf1d46a49b57ac2cf0f43c4e, type: 2}
   - {fileID: 1015704998836258, guid: 0006af95643914845999870d8dca2f6c, type: 2}
   m_CustomConfig: 0
@@ -30177,7 +30177,7 @@ MonoBehaviour:
   matchMaker: {fileID: 0}
   chosenPrefab: 0
   playerPrefabs:
-  - {fileID: 1915649449028830, guid: fae16ff7e746e434a8e15d33e9b6479a, type: 2}
+  - {fileID: 1915649449028830, guid: b31879fbbeb440347ba34c0ff9f26b54, type: 2}
   - {fileID: 1611743173199882, guid: 0c88f0ddaf1d46a49b57ac2cf0f43c4e, type: 2}
   playerStartPos:
   - {x: -25.5, y: 0, z: 64.5}

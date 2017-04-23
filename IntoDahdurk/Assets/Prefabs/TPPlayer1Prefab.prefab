@@ -431,7 +431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1047567328814692
 GameObject:
   m_ObjectHideFlags: 1
@@ -4822,8 +4822,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4362142919054806}
-  - component: {fileID: 95835447066933420}
-  - component: {fileID: 114924792454541938}
   m_Layer: 0
   m_Name: maia_model_basic
   m_TagString: Untagged
@@ -19507,23 +19505,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95835447066933420
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1467341964637660}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 49f24df6f6e1b564a87c35dcc45f63a4, type: 3}
-  m_Controller: {fileID: 9100000, guid: e2cf68ff4b1ffda45a77f7307dd789b9, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114009531034750056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19539,6 +19520,7 @@ MonoBehaviour:
     type: 2}
   lookAt: {fileID: 4846357800408726}
   walkMultiplier: 0.75
+  playerIndex: 0
 --- !u!114 &114343067089585226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19556,7 +19538,7 @@ MonoBehaviour:
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
   m_MoveSpeedMultiplier: 3.5
-  m_AnimSpeedMultiplier: 3.5
+  m_AnimSpeedMultiplier: 1.5
   m_GroundCheckDistance: 0.3
 --- !u!114 &114577095434881862
 MonoBehaviour:
@@ -19641,65 +19623,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallPrefab: {fileID: 1636526276396860, guid: 08f0e5ac90ef647469f54c7f343baf77, type: 2}
-  wallPositions:
-  - {x: 8.875, y: 1.5, z: 67.5}
-  - {x: 16.5, y: 1.5, z: 78.125}
-  - {x: 28.5, y: 1.5, z: 86.875}
-  - {x: 34.5, y: 1.5, z: 68.875}
-  - {x: 34.5, y: 1.5, z: 48.125}
-  - {x: 34.5, y: 1.5, z: 36.125}
-  - {x: 4.5, y: 1.5, z: 39.125}
-  - {x: 28.5, y: 1.5, z: 8.875}
-  - {x: 88.5, y: 1.5, z: 30.125}
-  - {x: 76.5, y: 1.5, z: 18.875}
-  - {x: 73.5, y: 1.5, z: 84.125}
-  - {x: 82.5, y: 1.5, z: 80.875}
-  - {x: 52.5, y: 1.5, z: 83.875}
-  - {x: 55.5, y: 1.5, z: 65.875}
-  - {x: 57.125, y: 1.5, z: 55.5}
-  - {x: 36.125, y: 1.5, z: 28.5}
-  - {x: 41.875, y: 1.5, z: 85.5}
-  - {x: 84.125, y: 1.5, z: 52.5}
-  - {x: 77.875, y: 1.5, z: 43.5}
-  - {x: 81.125, y: 1.5, z: 28.5}
-  - {x: 77.875, y: 1.5, z: 28.5}
-  - {x: 84.125, y: 1.5, z: 10.5}
-  - {x: 6.125, y: 1.5, z: 16.5}
-  WallRotations:
-  - 90
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
---- !u!114 &114924792454541938
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1467341964637660}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6846b572276fef42b578265dbcc480f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  invisiWallPrefab: {fileID: 0}
+  Player1WallPos: []
+  Player1WallRots: []
+  Player2WallPos: []
+  Player2WallRots: []
 --- !u!136 &136415130898947712
 CapsuleCollider:
   m_ObjectHideFlags: 1
