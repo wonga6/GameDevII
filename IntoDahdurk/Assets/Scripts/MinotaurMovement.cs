@@ -22,6 +22,7 @@ public class MinotaurMovement: MonoBehaviour {
 
 	// path following variables (private)
 	int currentNode = 0;
+	bool goBackwards = false;
 
 
 	// FUNCTIONS
@@ -69,6 +70,9 @@ public class MinotaurMovement: MonoBehaviour {
 	#endregion
 
 	#region Private Functions
+	/* Original Path Finding - might not be what we want for this game
+	 * TODO: return later and see if it can be used in the way we want it to
+	 * 
 	// path finding function
 	private void pathFinding() {
 		// find current position in relation to nodes of path
@@ -97,7 +101,7 @@ public class MinotaurMovement: MonoBehaviour {
 		int closestIndex = 0;
 		float minDist = float.MaxValue;
 
-		// loop and find closes node to the 
+		// loop and find closes node to the Minotaur
 		for(int i = 0; i < path.Count; i++) {
 			float dist = Vector3.Distance(path[i].position, position);
 			if(dist < minDist && i != currentNode) {
@@ -105,8 +109,37 @@ public class MinotaurMovement: MonoBehaviour {
 				minDist = dist;
 			}
 		}
-
 		return closestIndex;	
+	}
+	*/
+
+	private void pathFinding() {
+		int targetIndex = currentNode;
+
+		// seek target position
+		Vector3 direction = path[targetIndex].position - transform.position;
+		transform.position += Vector3.Normalize (direction) * Time.deltaTime * speed;
+
+		transform.rotation = Quaternion.LookRotation (direction.normalized);
+
+		if(direction.magnitude <= pathPntRad) {
+			if(!goBackwards) {
+				currentNode++;
+
+				if (currentNode == path.Count) {
+					currentNode = path.Count - 1;
+					goBackwards = true;
+				}
+			}
+			else {
+				currentNode--;
+
+				if (currentNode < 0) {
+					currentNode = 0;
+					goBackwards = false;
+				}
+			}			
+		}
 	}
 
 	// chase the player function
