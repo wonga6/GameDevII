@@ -9052,7 +9052,6 @@ GameObject:
   - component: {fileID: 114629234104098272}
   - component: {fileID: 114577095434881862}
   - component: {fileID: 114793308161175768}
-  - component: {fileID: 114362373890555488}
   m_Layer: 0
   m_Name: TPPlayer1Prefab_TEST
   m_TagString: Player
@@ -19560,22 +19559,6 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 3.5
   m_AnimSpeedMultiplier: 1.5
   m_GroundCheckDistance: 0.3
---- !u!114 &114362373890555488
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1915649449028830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a463f4cb038e3948be8550d0d6c41d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_LastSendTime: 0
-  m_SyncVarGuard: 0
-  m_MyView: {fileID: 0}
-  nAnim: {fileID: 114577095434881862}
-  numParameters: 1
 --- !u!114 &114577095434881862
 MonoBehaviour:
   m_ObjectHideFlags: 1
