@@ -11,6 +11,7 @@ public class CustomTPController : NetworkBehaviour {
 	public GameObject cameraPrefab;
 	public Transform lookAt;
 	public float walkMultiplier;
+	public int playerIndex;
 
 	//PRIVATE VARIABLES
 	CustomTPCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
@@ -20,6 +21,7 @@ public class CustomTPController : NetworkBehaviour {
 	private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 	private Vector3 otherPos;
 	private DistortControl dc;
+	private BuildMaze bm;
 
 
 	private void Start()
@@ -33,6 +35,9 @@ public class CustomTPController : NetworkBehaviour {
 			m_Cam = camera.transform;
 			m_Cam.GetComponent<CustomTPCamera> ().TargetLookAt = lookAt;
 			dc = m_Cam.GetComponent<DistortControl> ();
+			bm = GameObject.FindWithTag ("FakeWalls").GetComponent<BuildMaze> ();
+			Debug.Log ("call build");
+			bm.SetWalls (playerIndex);
 		}
 	}
 
