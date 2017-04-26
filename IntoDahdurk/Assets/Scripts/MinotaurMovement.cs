@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Networking;
 
-public class MinotaurMovement: MonoBehaviour {
+public class MinotaurMovement: NetworkBehaviour {
 
 	// PUBLIC VARIABLES
 
@@ -114,31 +115,33 @@ public class MinotaurMovement: MonoBehaviour {
 	*/
 
 	private void pathFinding() {
-		int targetIndex = currentNode;
+		if (isServer) {
 
-		// seek target position
-		Vector3 direction = path[targetIndex].position - transform.position;
-		transform.position += Vector3.Normalize (direction) * Time.deltaTime * speed;
+			int targetIndex = currentNode;
 
-		transform.rotation = Quaternion.LookRotation (direction.normalized);
+			// seek target position
+			Vector3 direction = path [targetIndex].position - transform.position;
+			transform.position += Vector3.Normalize (direction) * Time.deltaTime * speed;
 
-		if(direction.magnitude <= pathPntRad) {
-			if(!goBackwards) {
-				currentNode++;
+			transform.rotation = Quaternion.LookRotation (direction.normalized);
 
-				if (currentNode == path.Count) {
-					currentNode = path.Count - 1;
-					goBackwards = true;
-				}
+			if (direction.magnitude <= pathPntRad) {
+				if (!goBackwards) {
+					currentNode++;
+
+					if (currentNode == path.Count) {
+						currentNode = path.Count - 1;
+						goBackwards = true;
+					}
+				} else {
+					currentNode--;
+
+					if (currentNode < 0) {
+						currentNode = 0;
+						goBackwards = false;
+					}
+				}			
 			}
-			else {
-				currentNode--;
-
-				if (currentNode < 0) {
-					currentNode = 0;
-					goBackwards = false;
-				}
-			}			
 		}
 	}
 
