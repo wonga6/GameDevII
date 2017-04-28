@@ -100,13 +100,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b4ebbfe1f8f18b949928f52642746311, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.02
+  m_Volume: 0.05
   m_Pitch: 1.1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 109
+  Priority: 101
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -240,9 +240,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   safeRadius: 3
-  maxDistortDistance: 10
-  blurCap: 0.9
-  twirlCap: 100
+  maxDistortDistance: 7
+  blurCap: 0.8
+  twirlCap: 80
 --- !u!124 &124788112977800746
 Behaviour:
   m_ObjectHideFlags: 1
