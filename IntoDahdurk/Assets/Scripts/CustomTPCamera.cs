@@ -22,7 +22,7 @@ public class CustomTPCamera : MonoBehaviour {
 	public float yStart = 0f;
 	public float yMax = 80f;
 	public float yMin = -40f;
-	//public static float deadzone = 0.1f;
+
 
 	//PRIVATE VARIABLES
 	private float mouseX = 0f;

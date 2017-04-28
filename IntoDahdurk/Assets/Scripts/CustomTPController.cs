@@ -22,6 +22,7 @@ public class CustomTPController : NetworkBehaviour {
 	private Vector3 otherPos;
 	private DistortControl dc;
 	private BuildMaze bm;
+	private AudioSource footsteps;
 
 
 	private void Start()
@@ -38,6 +39,7 @@ public class CustomTPController : NetworkBehaviour {
 			bm = GameObject.FindWithTag ("FakeWalls").GetComponent<BuildMaze> ();
 			Debug.Log ("call build");
 			bm.SetWalls (playerIndex);
+			footsteps = GetComponent<AudioSource> ();
 		}
 	}
 
