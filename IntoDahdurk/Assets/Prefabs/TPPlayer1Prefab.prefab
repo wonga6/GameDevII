@@ -11942,7 +11942,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1550663364438608}
-  m_LocalRotation: {x: 0.71746594, y: 0.28521526, z: 0.5438978, w: 0.32874036}
+  m_LocalRotation: {x: 0.7174659, y: 0.28521523, z: 0.54389775, w: 0.32874033}
   m_LocalPosition: {x: -0.020147748, y: 0.092506655, z: 0.027272183}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -12495,7 +12495,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1874411475031956}
-  m_LocalRotation: {x: 0.71746594, y: 0.28521526, z: 0.5438978, w: 0.32874036}
+  m_LocalRotation: {x: 0.7174659, y: 0.28521523, z: 0.54389775, w: 0.32874033}
   m_LocalPosition: {x: -0.020147748, y: 0.092506655, z: 0.027272183}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16449,7 +16449,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1318052569758658}
-  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
+  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -19539,6 +19539,7 @@ MonoBehaviour:
     type: 2}
   lookAt: {fileID: 4846357800408726}
   walkMultiplier: 0.75
+  playerIndex: 0
 --- !u!114 &114343067089585226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19641,54 +19642,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallPrefab: {fileID: 1636526276396860, guid: 08f0e5ac90ef647469f54c7f343baf77, type: 2}
-  wallPositions:
-  - {x: 8.875, y: 1.5, z: 67.5}
-  - {x: 16.5, y: 1.5, z: 78.125}
-  - {x: 28.5, y: 1.5, z: 86.875}
-  - {x: 34.5, y: 1.5, z: 68.875}
-  - {x: 34.5, y: 1.5, z: 48.125}
-  - {x: 34.5, y: 1.5, z: 36.125}
-  - {x: 4.5, y: 1.5, z: 39.125}
-  - {x: 28.5, y: 1.5, z: 8.875}
-  - {x: 88.5, y: 1.5, z: 30.125}
-  - {x: 76.5, y: 1.5, z: 18.875}
-  - {x: 73.5, y: 1.5, z: 84.125}
-  - {x: 82.5, y: 1.5, z: 80.875}
-  - {x: 52.5, y: 1.5, z: 83.875}
-  - {x: 55.5, y: 1.5, z: 65.875}
-  - {x: 57.125, y: 1.5, z: 55.5}
-  - {x: 36.125, y: 1.5, z: 28.5}
-  - {x: 41.875, y: 1.5, z: 85.5}
-  - {x: 84.125, y: 1.5, z: 52.5}
-  - {x: 77.875, y: 1.5, z: 43.5}
-  - {x: 81.125, y: 1.5, z: 28.5}
-  - {x: 77.875, y: 1.5, z: 28.5}
-  - {x: 84.125, y: 1.5, z: 10.5}
-  - {x: 6.125, y: 1.5, z: 16.5}
-  WallRotations:
-  - 90
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
-  - 90
+  invisiWallPrefab: {fileID: 0}
+  Player1WallPos: []
+  Player1WallRots: []
+  Player2WallPos: []
+  Player2WallRots: []
 --- !u!114 &114924792454541938
 MonoBehaviour:
   m_ObjectHideFlags: 1
