@@ -7499,7 +7499,7 @@ Prefab:
         type: 2}
       propertyPath: minotaur
       value: 
-      objectReference: {fileID: 1015704998836258, guid: 0006af95643914845999870d8dca2f6c,
+      objectReference: {fileID: 1027889383108524, guid: c58f487311a939542b79d6d1c06c3c59,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e44a2aa7bcc99c14b940e064622ad9e3, type: 2}
