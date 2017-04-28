@@ -98,15 +98,15 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fc16bf74692169c4e87d9ab7f6e46581, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.015
+  m_audioClip: {fileID: 8300000, guid: b4ebbfe1f8f18b949928f52642746311, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.02
   m_Pitch: 1.1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 109
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -239,11 +239,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f0b816ac01699244ba3af17410e6f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdCrossed: 0
-  safeRadius: 7
-  maxDistortDistance: 20
-  blurCap: 0.8
-  twirlCap: 120
+  safeRadius: 3
+  maxDistortDistance: 10
+  blurCap: 0.9
+  twirlCap: 100
 --- !u!124 &124788112977800746
 Behaviour:
   m_ObjectHideFlags: 1

@@ -12,6 +12,7 @@ public class CustomTPController : NetworkBehaviour {
 	public Transform lookAt;
 	public float walkMultiplier;
 	public int playerIndex;
+	public bool thresholdCrossed = false;
 
 	//PRIVATE VARIABLES
 	CustomTPCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
@@ -20,9 +21,7 @@ public class CustomTPController : NetworkBehaviour {
 	private Vector3 m_Move;
 	private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 	private Vector3 otherPos;
-	private DistortControl dc;
 	private BuildMaze bm;
-	private AudioSource footsteps;
 
 
 	private void Start()
@@ -35,10 +34,8 @@ public class CustomTPController : NetworkBehaviour {
 			camera.transform.parent = this.transform;
 			m_Cam = camera.transform;
 			m_Cam.GetComponent<CustomTPCamera> ().TargetLookAt = lookAt;
-			dc = m_Cam.GetComponent<DistortControl> ();
 			bm = GameObject.FindWithTag ("FakeWalls").GetComponent<BuildMaze> ();
 			bm.SetWalls (playerIndex);
-			footsteps = GetComponent<AudioSource> ();
 		}
 	}
 
@@ -91,7 +88,7 @@ public class CustomTPController : NetworkBehaviour {
 		if (other.gameObject.name == "Threshold") 
 		{
 			Debug.Log ("Threshold Crossed");
-			dc.thresholdCrossed = true;
+			thresholdCrossed = true;
 		}
 	}
 }

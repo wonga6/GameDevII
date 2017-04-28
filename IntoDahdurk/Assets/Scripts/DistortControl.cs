@@ -5,23 +5,20 @@ using UnityStandardAssets.ImageEffects;
 
 public class DistortControl : MonoBehaviour {
 
-	public bool thresholdCrossed = false;
-
 	//camera effects
 	private MotionBlur blur;
 	private Twirl twirl;
 
 	//finding other player
 	private Transform otherPlayer = null;
-	private bool twoPlayers = false;
 
 	//distortion controls
 	public float safeRadius;
 	public float maxDistortDistance;
 	public float blurCap;
 	public float twirlCap;
-	private float distance = 0f;
 	private float distortRange;
+	private AudioSource sound;
 
 
 	// Use this for initialization
@@ -34,6 +31,8 @@ public class DistortControl : MonoBehaviour {
 		twirl.angle = 0f;
 
 		distortRange = maxDistortDistance - safeRadius;
+
+		sound = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -43,29 +42,27 @@ public class DistortControl : MonoBehaviour {
 		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
 		if (players.Length == 2) 
 		{
-			twoPlayers = true;
-			if (players [0] == this.gameObject)
+			if (players [0] == transform.parent.gameObject) 
 			{
 				otherPlayer = players [1].transform;
 			}
-			else
+			else 
 			{
 				otherPlayer = players [0].transform;
 			}
 		} 
-		else 
-		{
-			Debug.Log ("Missing Player");
-			twoPlayers = false;
-		}
+		else
+			otherPlayer = null;
 
 		//Check parameters to apply distort
 		if (otherPlayer != null) 
 		{
-			bool otherThresholdCrossed = otherPlayer.GetComponentInChildren<DistortControl>().thresholdCrossed;
-			if (this.thresholdCrossed && otherThresholdCrossed)
+			if (transform.parent.GetComponent<CustomTPController> ().thresholdCrossed
+			    && otherPlayer.GetComponent<CustomTPController> ().thresholdCrossed) 
+			{
+				Debug.Log ("Both have Crossed");
 				UpdateDistance ();
-				
+			}
 		}
 	}
 
@@ -73,12 +70,19 @@ public class DistortControl : MonoBehaviour {
 	public void UpdateDistance()
 	{
 		float distance = (transform.parent.position - otherPlayer.position).magnitude;
+		Debug.Log (distance);
 		if (distance > safeRadius) 
 		{
 			float distortAmount = (distance - safeRadius) / distortRange;
 			Debug.Log (distortAmount);
 			blur.blurAmount = blurCap * distortAmount;
 			twirl.angle = twirlCap * distortAmount;
+
+			if (!sound.isPlaying)
+				sound.Play ();
 		}
+
+		else if (sound.isPlaying)
+			sound.Stop();
 	}
 }
