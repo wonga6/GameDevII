@@ -1,34 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 // TODO: add something to take in the actual notes - in process
 // TODO: fix it so that note is shown based on a collision trigger, not keyboard press
 
-public class NotePassing : MonoBehaviour {
+public class NotePassing : NetworkBehaviour {
 
 	// PUBLIC VARIABLES
 	public Image noteBackground;
 	public Text noteText;
-
-	public float fadeRate; // how fast the node will fade
-	public float timeBeforeFade; // how long to wait before fading note
-
-	public string path; // path to the place where the note text file is stored
+	public string playerName;
 
 	// PRIVATE VARIABLES
 	private GameObject noteManager;
 
-	private List<string> notes; // the notes of the character
-	private int index; // the index of the current note
-
-	private float timeLeft;
-	private bool noteShowing;
-	private bool fadeNote; // whether or not to fade the note
-
-	private static float EPSILON = 0.01f; // EPSILON 'cause float compairison w/ 0 sucks
+	[SyncVar]
+	private string noteMessage = "";
 
 	// FUNCTIONS
 
@@ -36,116 +26,81 @@ public class NotePassing : MonoBehaviour {
 	// called before start
 	void Awake() {
 		noteManager = GameObject.Find ("NoteManager");
-		noteManager.GetComponent<NoteManager> ().addPlayer (gameObject);
+		if (noteManager != null) {
+			noteManager.GetComponent<NoteManager> ().addPlayer (gameObject);
+		}
+
+		noteText.text = noteMessage;
 	}
 
 	// Use this for initialization
 	void Start () {
-		// get all the notes
-		notes = new List<string>();
-		index = 0;
-		getNotesFromTextFile();
-
-		// set the initial visisbility variables
-		timeLeft = timeBeforeFade;
-		noteShowing = false;
-		fadeNote = false;
-
-		// set initial visibility of the notes
-		noteVisibility(0.0f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.T)) {
+		if(Input.GetKeyDown(KeyCode.T) && noteManager != null) {
 			noteManager.GetComponent<NoteManager> ().setTrigger ();
+		}
+	}
+
+	void OnTriggerEnter(Collider col) {
+		if(col.tag == "noteTrigger") {
+			if(noteManager != null) {
+				col.gameObject.SetActive (false);
+				noteManager.GetComponent<NoteManager> ().setTrigger ();
+			}
 		}
 	}
 	#endregion
 
 	#region Public Functions
-	// show the next note
-	public void nextNote() {
-		noteVisibility(1.0f);
-		noteShowing = true;
+	[ClientRpc]
+	public void RpcShow(string name, string text) {
 
-		if(index < notes.Count) {
-			noteText.text = notes[index];	
-			StartCoroutine (fadeNoteOverTime ());
+		string message = "";
+		if(isLocalPlayer && name == playerName) {
+			message = "You: " + text;
 		}
+		else {
+			message = name + ": " + text;
+		}
+
+		noteText.text = message;
+		StartCoroutine (wait ());
 	}
 
-	public bool getNoteShowing() {
-		return noteShowing;
+	[ClientRpc]
+	public void RpcShow2(string name, string text) {
+		string message = "";
+		if(isLocalPlayer && name == playerName) {
+			message = "You: " + text;
+		}
+		else {
+			message = name + ": " + text;
+		}
+
+		noteText.text = message;
+		StartCoroutine (wait2 ());
 	}
 	#endregion
 
 	#region Private Functions
-	// set the visibility for the note
-	private void noteVisibility(float visibility) {
-		Color full = noteBackground.color;
-		full.a = visibility;
-		noteBackground.color = full;
+	private IEnumerator wait() {
+		yield return new WaitForSeconds (4.0f);
 
-		full = noteText.color;
-		full.a = visibility;
-		noteText.color = full;
-	}
-
-	// fade the note over time
-	private IEnumerator fadeNoteOverTime() {
-		while (true) {
-			// count the time before beginning to fade the note
-			if (timeLeft < 0f && !fadeNote) {
-				fadeNote = true;
-			} else {
-				yield return new WaitForSeconds (0.01f);
-				timeLeft -= Time.deltaTime;
-			}
-
-			// start to fade the note
-			if (fadeNote) {
-				Color noteBackgroundColor = noteBackground.color;
-				Color noteTextColor = noteText.color;
-
-				// fade note until alpha channel is 0
-				if (noteBackgroundColor.a > 0f && noteTextColor.a > 0f) {
-					noteBackgroundColor.a = Mathf.Lerp (noteBackgroundColor.a, 0f, fadeRate * Time.deltaTime);
-					noteBackground.color = noteBackgroundColor;
-
-					noteTextColor.a = Mathf.Lerp (noteTextColor.a, 0f, fadeRate * Time.deltaTime);
-					noteText.color = noteTextColor;
-				}	
-
-				/* DEBUG STATEMENTS FOR FLOAT COMPARISON TO ALMOST ZERO
-				Debug.Log("note background: " + noteBackgroundColor.a);
-				Debug.Log("text: " + noteTextColor.a);
-				Debug.Log("EPSILON " + EPSILON);
-				*/
-
-				// once alpha channel is 0, note is no longer showing
-				if (noteBackgroundColor.a <= EPSILON && noteTextColor.a <= EPSILON) {
-					// reset the visibility variables
-					noteShowing = false;
-					fadeNote = false;
-					timeLeft = timeBeforeFade;
-
-					// increment the index
-					index++;
-
-					break;
-				}
-			}
+		noteText.text = "";
+		if(noteManager != null && playerName == "Maia") {
+			noteManager.GetComponent<NoteManager> ().nextNote ();
 		}
 	}
 
-	// read the notes from a file and store them in a list
-	private void getNotesFromTextFile() {
-		StreamReader instream = new StreamReader(path);
+	private IEnumerator wait2() {
+		yield return new WaitForSeconds (2.0f);
 
-		while(!instream.EndOfStream) {
-			string line = instream.ReadLine();
-			notes.Add(line);
+		noteText.text = "";
+		if(noteManager != null && playerName == "Maia") {
+			noteManager.GetComponent<NoteManager> ().increment ();
 		}
 	}
 	#endregion

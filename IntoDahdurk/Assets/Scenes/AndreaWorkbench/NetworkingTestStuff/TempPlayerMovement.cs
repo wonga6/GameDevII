@@ -22,7 +22,7 @@ public class TempPlayerMovement : NetworkBehaviour {
 		}
 
 		if(Input.GetKeyDown(KeyCode.T)) {
-			nP.nextNote();
+			//nP.nextNote();
 		}
 
 		var x = Input.GetAxis("Horizontal")*0.1f;
