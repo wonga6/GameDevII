@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 0, z: 0}
-  minotaur: {fileID: 0}
+  minotaur: {fileID: 1027889383108524, guid: c58f487311a939542b79d6d1c06c3c59, type: 2}
 --- !u!114 &114834270406676992
 MonoBehaviour:
   m_ObjectHideFlags: 1

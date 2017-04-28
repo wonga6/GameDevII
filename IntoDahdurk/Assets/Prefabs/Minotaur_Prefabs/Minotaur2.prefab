@@ -263,9 +263,10 @@ GameObject:
   - component: {fileID: 114984993412797210}
   - component: {fileID: 54188548066452158}
   - component: {fileID: 114797598214006830}
-  - component: {fileID: 114391252781426152}
   - component: {fileID: 65269216812804762}
   - component: {fileID: 114547772371671702}
+  - component: {fileID: 95396451850067500}
+  - component: {fileID: 114264867584148546}
   m_Layer: 0
   m_Name: Minotaur2
   m_TagString: Untagged
@@ -13131,7 +13132,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1607738896250010}
-  m_LocalRotation: {x: 0.019153813, y: 0.70240635, z: 0.7113706, w: 0.01450365}
+  m_LocalRotation: {x: 0.019153815, y: 0.7024064, z: 0.71137065, w: 0.014503651}
   m_LocalPosition: {x: -0.0004885409, y: -0.014237738, z: 0.027480194}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -17149,7 +17150,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1901370011635056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: ddc9e80442359924d895cbaf9d38a153, type: 3}
   m_Controller: {fileID: 9100000, guid: d1ff612d686a319409b5fdc5e272e3d9, type: 2}
   m_CullingMode: 1
@@ -17159,26 +17160,42 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114391252781426152
+--- !u!95 &95396451850067500
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1027889383108524}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ddc9e80442359924d895cbaf9d38a153, type: 3}
+  m_Controller: {fileID: 9100000, guid: d1ff612d686a319409b5fdc5e272e3d9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114264867584148546
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1027889383108524}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
+  m_Animator: {fileID: 95396451850067500}
+  m_ParameterSendBits: 0
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &114547772371671702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17221,7 +17238,7 @@ MonoBehaviour:
     i14: 60
     i15: 89
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114984993412797210
 MonoBehaviour:
   m_ObjectHideFlags: 1
