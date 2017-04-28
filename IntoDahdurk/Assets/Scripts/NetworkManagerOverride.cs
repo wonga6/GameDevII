@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.NetworkSystem;
+using UnityEngine.UI;
 
 // copied from: https://forum.unity3d.com/threads/using-multiple-player-prefabs-with-the-network-manager.438930/
 
@@ -25,7 +26,6 @@ public class NetworkManagerOverride : NetworkManager
 	}
 
 	// FUNCTIONS
-
 	#region Unity Functions
 
 	//When game starts, set max players to 2
@@ -33,7 +33,7 @@ public class NetworkManagerOverride : NetworkManager
 	{
 		this.maxConnections = 2;
 	}
-
+		
 	// override network manager's OnServerAddPlayer so that multiple player prefabs can be added
 	public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId, NetworkReader extraMessageReader)
 	{

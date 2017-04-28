@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.NetworkSystem;
+using UnityEngine.UI;
 
 // custom NetworkLobbyManager class to allow multiple player prefabs to be spawned
 public class LobbyManagerOverride : NetworkLobbyManager {

@@ -28,6 +28,8 @@ public class CustomTPCharacter : MonoBehaviour
 	CapsuleCollider m_Capsule;
 	bool m_Crouching;
 
+	private AudioSource footsteps;
+
 
 	void Start()
 	{
@@ -39,6 +41,8 @@ public class CustomTPCharacter : MonoBehaviour
 
 		m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 		m_OrigGroundCheckDistance = m_GroundCheckDistance;
+
+		footsteps = GetComponent<AudioSource> ();
 	}
 
 
@@ -143,11 +147,15 @@ public class CustomTPCharacter : MonoBehaviour
 		if (m_IsGrounded && move.magnitude > 0)
 		{
 			m_Animator.speed = m_AnimSpeedMultiplier;
+			if (!footsteps.isPlaying)
+				footsteps.Play ();
 		}
 		else
 		{
 			// don't use that while airborne
 			m_Animator.speed = 1;
+			if (footsteps.isPlaying)
+				footsteps.Stop ();
 		}
 	}
 

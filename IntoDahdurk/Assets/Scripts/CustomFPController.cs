@@ -19,7 +19,6 @@ public class CustomFPController : NetworkBehaviour {
 	private Vector3 m_Move;
 	private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 	private Vector3 otherPos;
-	private DistortControl dc;
 
 
 	private void Start()
@@ -36,9 +35,6 @@ public class CustomFPController : NetworkBehaviour {
 
 			//Disable this character's mesh, so it doesn't interfere with camera
 			characterMesh.SetActive(false);
-
-
-			dc = m_Cam.GetComponent<DistortControl> ();
 		}
 	}
 
@@ -55,7 +51,7 @@ public class CustomFPController : NetworkBehaviour {
 			//increase distortion based on distance from other player
 			if (NetworkServer.connections.Count < 2) 
 			{
-				dc.UpdateDistance (0f);
+				//dc.UpdateDistance (0f);
 			}
 		} 
 	}
