@@ -431,7 +431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1047567328814692
 GameObject:
   m_ObjectHideFlags: 1
@@ -4822,8 +4822,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4362142919054806}
-  - component: {fileID: 95835447066933420}
-  - component: {fileID: 114924792454541938}
   m_Layer: 0
   m_Name: maia_model_basic
   m_TagString: Untagged
@@ -19507,23 +19505,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95835447066933420
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1467341964637660}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 49f24df6f6e1b564a87c35dcc45f63a4, type: 3}
-  m_Controller: {fileID: 9100000, guid: e2cf68ff4b1ffda45a77f7307dd789b9, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114009531034750056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19557,7 +19538,7 @@ MonoBehaviour:
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
   m_MoveSpeedMultiplier: 3.5
-  m_AnimSpeedMultiplier: 3.5
+  m_AnimSpeedMultiplier: 1.7
   m_GroundCheckDistance: 0.3
 --- !u!114 &114577095434881862
 MonoBehaviour:
