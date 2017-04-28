@@ -1,20 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+using System.IO;
 
 public class NoteManager : MonoBehaviour {
 
 	// PUBLIC VARIABLES
-	public int numNotes;
+	public string path;
 
 	// PRIVATE VARIABLES
 	private List<GameObject> players;
+	private List<List<Pair<string, string>>> noteGroups;
 
-	// list of the triggers for notes - whether each player has
-	// triggered the note and how many notes to show
-	private List<Tuple<bool, bool, int> > triggers;
-
-	private bool show = false; // whether or not to start showing notes
 	private int index = 0; // number of the note currently on
 	private int count = 0; // the count of how many notes gone through
 
@@ -24,22 +22,13 @@ public class NoteManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		players = new List<GameObject> ();
-		triggers = new List<Tuple<bool, bool, int> > ();
+		noteGroups = new List<List<Pair<string, string>>> ();
 
-		// set all triggers as not having been triggered yet
-		for(int i = 0; i < numNotes; i++) {
-			Tuple<bool, bool, int> p = new Tuple<bool, bool, int> (false, false, 1);
-			triggers.Add (p);
-		}
+		readNoteFile ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		// once both players have triggered a note show the note
-		if(show) {
-			showNotes ();
-			show = false;
-		}
 	}
 	#endregion
 
@@ -55,56 +44,74 @@ public class NoteManager : MonoBehaviour {
 
 	// set the trigger to true for that note
 	public void setTrigger() {
-		// don't go out of index
-		if (index > triggers.Count)
-			return;
+		//StartCoroutine(showNoteGroups());
+		showNote();
+	}
 
-		if(!triggers[index].first) {
-			triggers [index].first = true;
-		}
-		else if(!triggers[index].second) {
-			triggers [index].second = true;
-		}
-
-		// if both triggers have been set off then show the notes
-		if(triggers[index].first && triggers[index].second) {
-			show = true;
+	public void showNote() {
+		for(int i = 0; i < players.Count; i++) {
+			if (index < noteGroups.Count) {
+				players [i].GetComponent<NotePassing> ().RpcShow (noteGroups [index] [count].first, noteGroups [index] [count].second);
+			}
 		}
 	}
 
-	// show the notes of the players
-	public void showNotes() {
-		// don't show notes if one of the players doesn't exist
-		if (players.Count != 2)
-			return;
+	public void nextNote() {
+		if (count < noteGroups [index].Count) {
+			count++;
+			showNote ();
+		}
+		else {
+			Debug.Log ("reset");
+			count = 0;
 
-		StartCoroutine (showFirstPlayer ());
+			if (index < noteGroups.Count - 1) {
+				index++;
+			}
+		}
 	}
 	#endregion
 
 	#region Private Functions
-	// show the first player's notes
-	private IEnumerator showFirstPlayer() {
-		while (count < triggers [index].third) {
-			players [0].GetComponent<NotePassing> ().nextNote ();
+	private void readNoteFile() {
+		StreamReader instream = new StreamReader(path);
 
-			yield return StartCoroutine (showCorresponding ());
-		}
-	}
+		List<Pair<string, string>> group = new List<Pair<string, string>> ();
+		Pair<string, string> note = new Pair<string, string> ();
 
-	// wait for the first player to finish displaying note
-	// before showing note for other player
-	private IEnumerator showCorresponding() {
-		while(true) {
-			if(!players[0].GetComponent<NotePassing>().getNoteShowing()) {
-				break;
+		while(!instream.EndOfStream) {
+			string line = instream.ReadLine();
+
+			if(line == "break") {
+				noteGroups.Add (group);
+
+				group = new List<Pair<string, string>> ();
+				note = new Pair<string, string> ();
 			}
+			else if(line == "Maia" || line == "Beni") {
+				note.first = line;
+			}
+			else if(line == "") {
+				continue;
+			}
+			else {
+				note.second = line;
 
-			yield return new WaitForSeconds (0.1f);
+				group.Add (note);
+				note = new Pair<string, string> ();
+			}
 		}
 
-		players [1].GetComponent<NotePassing> ().nextNote ();
-		count++;
+		/* DEBUGGING PRINT OUT */
+
+		for(int i = 0; i < noteGroups.Count; i++) {
+			Debug.Log ("Group: " + i);
+			for(int x = 0; x < noteGroups[i].Count; x++) {
+				Debug.Log ("  " + noteGroups [i] [x].first + " : " + noteGroups [i] [x].second);
+			}
+		}
+
+
 	}
 	#endregion
 }

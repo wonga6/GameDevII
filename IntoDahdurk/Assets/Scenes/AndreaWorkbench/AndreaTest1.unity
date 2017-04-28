@@ -153,7 +153,6 @@ MonoBehaviour:
   - {fileID: 1414239547869774, guid: e9c42fe234d710041b5ec9e3c4a74771, type: 2}
   - {fileID: 1813084652974132, guid: c53f6aa202ad7b349844b0ed3ef97c8d, type: 2}
   - {fileID: 1780304249339914, guid: b262188fa385a60448610a7e8c90a433, type: 2}
-  - {fileID: 1015704998836258, guid: 0006af95643914845999870d8dca2f6c, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -203,7 +202,6 @@ MonoBehaviour:
   playerStartPos:
   - {x: 0, y: 0, z: 0}
   - {x: 10, y: 0, z: 10}
-  maze: {fileID: 1911905174266176, guid: a2a4fb63fec809445b5a59a2e9fd7fb2, type: 2}
 --- !u!4 &287106422
 Transform:
   m_ObjectHideFlags: 0
@@ -440,6 +438,10 @@ Prefab:
       value: 
       objectReference: {fileID: 1015704998836258, guid: 0006af95643914845999870d8dca2f6c,
         type: 2}
+    - target: {fileID: 1198183424621106, guid: e44a2aa7bcc99c14b940e064622ad9e3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e44a2aa7bcc99c14b940e064622ad9e3, type: 2}
   m_IsPrefabParent: 0
@@ -706,6 +708,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1122115258687408, guid: d921c2793dddc2342a7a86db37f2aaf2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d921c2793dddc2342a7a86db37f2aaf2, type: 2}
   m_IsPrefabParent: 0
@@ -717,15 +723,15 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2004749544}
-  - component: {fileID: 2004749543}
   - component: {fileID: 2004749545}
+  - component: {fileID: 2004749543}
   m_Layer: 0
   m_Name: NoteManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2004749543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,7 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065c4b254b5cb9a4dbd4312f53a59801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numNotes: 1
+  path: Assets/TextFiles/notesTextFile.txt
 --- !u!4 &2004749544
 Transform:
   m_ObjectHideFlags: 0
