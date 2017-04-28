@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class WallBehavior : MonoBehaviour {
 
-	public AudioClip crossSound;
 	public GameObject poof;
 	public float poofLifetime;
+	private AudioSource sound;
 
 	private GameObject curPoof;
 	private float timer = 0f;
 
 	// Use this for initialization
 	void Start () {
-		
+		sound = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -31,8 +31,7 @@ public class WallBehavior : MonoBehaviour {
 		Debug.Log ("trigger");
 		if (other.gameObject.tag == "Player") {
 			Debug.Log ("isPlayer");
-			if(crossSound != null)
-				AudioSource.PlayClipAtPoint (crossSound, transform.position);
+			sound.Play ();
 			curPoof = (GameObject)Instantiate (poof, this.transform, false) as GameObject;
 			timer = 0f;
 		}
