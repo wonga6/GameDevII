@@ -55,7 +55,7 @@ public class CustomFPController : NetworkBehaviour {
 			//increase distortion based on distance from other player
 			if (NetworkServer.connections.Count < 2) 
 			{
-				dc.UpdateDistance (0f);
+				//dc.UpdateDistance (0f);
 			}
 		} 
 	}

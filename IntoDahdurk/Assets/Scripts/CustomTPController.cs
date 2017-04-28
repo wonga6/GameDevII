@@ -37,7 +37,6 @@ public class CustomTPController : NetworkBehaviour {
 			m_Cam.GetComponent<CustomTPCamera> ().TargetLookAt = lookAt;
 			dc = m_Cam.GetComponent<DistortControl> ();
 			bm = GameObject.FindWithTag ("FakeWalls").GetComponent<BuildMaze> ();
-			Debug.Log ("call build");
 			bm.SetWalls (playerIndex);
 			footsteps = GetComponent<AudioSource> ();
 		}
@@ -51,12 +50,6 @@ public class CustomTPController : NetworkBehaviour {
 			if (!m_Jump) 
 			{
 				m_Jump = CrossPlatformInputManager.GetButtonDown ("Jump");
-			}
-
-			//increase distortion based on distance from other player
-			if (NetworkServer.connections.Count < 2) 
-			{
-				dc.UpdateDistance (0f);
 			}
 		} 
 	}
@@ -90,6 +83,15 @@ public class CustomTPController : NetworkBehaviour {
 			// pass all parameters to the character control script
 			m_Character.Move (m_Move, crouch, m_Jump);
 			m_Jump = false;
+		}
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.name == "Threshold") 
+		{
+			Debug.Log ("Threshold Crossed");
+			dc.thresholdCrossed = true;
 		}
 	}
 }
