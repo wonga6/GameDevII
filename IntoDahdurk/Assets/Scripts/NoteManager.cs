@@ -44,7 +44,6 @@ public class NoteManager : MonoBehaviour {
 
 	// set the trigger to true for that note
 	public void setTrigger() {
-		//StartCoroutine(showNoteGroups());
 		showNote();
 	}
 
@@ -56,19 +55,34 @@ public class NoteManager : MonoBehaviour {
 		}
 	}
 
+	public void showNote2() {
+		for(int i = 0; i < players.Count; i++) {
+			if (index < noteGroups.Count) {
+				players [i].GetComponent<NotePassing> ().RpcShow2 (noteGroups [index] [count].first, noteGroups [index] [count].second);
+			}
+		}
+	}
+
 	public void nextNote() {
 		if (count < noteGroups [index].Count) {
 			count++;
-			showNote ();
+			showNote2 ();
 		}
 		else {
-			Debug.Log ("reset");
+			/*Debug.Log ("reset");
 			count = 0;
 
-			if (index < noteGroups.Count - 1) {
+			if (index+1 < noteGroups.Count) {
 				index++;
 			}
+			*/
 		}
+	}
+
+	public void increment() {
+		Debug.Log ("increment and reset");
+		count = 0;
+		index++;
 	}
 	#endregion
 
@@ -103,13 +117,14 @@ public class NoteManager : MonoBehaviour {
 		}
 
 		/* DEBUGGING PRINT OUT */
-
+		/*
 		for(int i = 0; i < noteGroups.Count; i++) {
 			Debug.Log ("Group: " + i);
 			for(int x = 0; x < noteGroups[i].Count; x++) {
 				Debug.Log ("  " + noteGroups [i] [x].first + " : " + noteGroups [i] [x].second);
 			}
 		}
+		*/
 
 
 	}

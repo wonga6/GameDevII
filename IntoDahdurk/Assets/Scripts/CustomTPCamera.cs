@@ -46,9 +46,9 @@ public class CustomTPCamera : MonoBehaviour {
 	//Called after all other update functions are called
 	void FixedUpdate ()
 	{
-		Debug.Log ("Updating");
+		//Debug.Log ("Updating");
 		//if (isLocalPlayer) {
-			Debug.Log ("isclient");
+			//Debug.Log ("isclient");
 			if (TargetLookAt == null)
 				return;
 

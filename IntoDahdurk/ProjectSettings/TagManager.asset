@@ -7,6 +7,7 @@ TagManager:
   - body
   - AI_Path
   - FakeWalls
+  - noteTrigger
   layers:
   - Default
   - TransparentFX

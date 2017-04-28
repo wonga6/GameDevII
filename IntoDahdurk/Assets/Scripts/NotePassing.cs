@@ -43,6 +43,15 @@ public class NotePassing : NetworkBehaviour {
 			noteManager.GetComponent<NoteManager> ().setTrigger ();
 		}
 	}
+
+	void OnTriggerEnter(Collider col) {
+		if(col.tag == "noteTrigger") {
+			if(noteManager != null) {
+				col.gameObject.SetActive (false);
+				noteManager.GetComponent<NoteManager> ().setTrigger ();
+			}
+		}
+	}
 	#endregion
 
 	#region Public Functions
@@ -61,12 +70,37 @@ public class NotePassing : NetworkBehaviour {
 		StartCoroutine (wait ());
 	}
 
+	[ClientRpc]
+	public void RpcShow2(string name, string text) {
+		string message = "";
+		if(isLocalPlayer && name == playerName) {
+			message = "You: " + text;
+		}
+		else {
+			message = name + ": " + text;
+		}
+
+		noteText.text = message;
+		StartCoroutine (wait2 ());
+	}
+	#endregion
+
+	#region Private Functions
 	private IEnumerator wait() {
-		yield return new WaitForSeconds (5.0f);
+		yield return new WaitForSeconds (4.0f);
 
 		noteText.text = "";
 		if(noteManager != null && playerName == "Maia") {
 			noteManager.GetComponent<NoteManager> ().nextNote ();
+		}
+	}
+
+	private IEnumerator wait2() {
+		yield return new WaitForSeconds (2.0f);
+
+		noteText.text = "";
+		if(noteManager != null && playerName == "Maia") {
+			noteManager.GetComponent<NoteManager> ().increment ();
 		}
 	}
 	#endregion
