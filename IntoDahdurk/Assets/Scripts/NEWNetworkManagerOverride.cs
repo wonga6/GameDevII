@@ -35,17 +35,21 @@ public class NEWNetworkManagerOverride : NetworkManager {
 	public void Start()
 	{
 		this.maxConnections = 2;
+
+		foreach(GameObject prefab in playerPrefabs)
+			ClientScene.RegisterPrefab (prefab);
 	}
 
 	// override network manager's OnServerAddPlayer so that multiple player prefabs can be added
 	public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId, NetworkReader extraMessageReader)
 	{
-		//Debug.Log ("add player");
+		Debug.Log ("Instantiating " + index);
 		GameObject player;
-		//chosenPrefab = index;
+
+		Transform startPos = GetStartPosition ();
 
 		//spawn player at start position based on index #
-		player = Instantiate(playerPrefabs[index], playerStartPos[index], Quaternion.identity) as GameObject;
+		player = (GameObject)Instantiate(playerPrefabs[index], playerStartPos[index], Quaternion.identity) as GameObject;
 
 		// add player to server
 		NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
@@ -55,7 +59,7 @@ public class NEWNetworkManagerOverride : NetworkManager {
 	}
 
 	// override network manager's OnClientConnect
-	public override void OnClientConnect(NetworkConnection conn)
+	/*public override void OnClientConnect(NetworkConnection conn)
 	{
 		Debug.Log ("Client connect");
 		//if there are more than 2 connections, cancel this connection
@@ -65,14 +69,36 @@ public class NEWNetworkManagerOverride : NetworkManager {
 			return;
 		}
 
+
 		// create a network message (apparently needed to add a player?)
 		NetworkMessage test = new NetworkMessage();
-		test.chosenClass = chosenPrefab;
-
+		test.chosenClass = index;
+		
 		// add player to client scene
+		Debug.Log("Adding PLayer");
 		ClientScene.AddPlayer(conn, 0, test);
 
+	}*/
+
+	public override void OnServerConnect(NetworkConnection conn)
+	{
+		Debug.Log ("new player connected");
+		if (NetworkServer.connections.Count == 2) 
+		{
+			Debug.Log ("ready to add players");
+			index = 0;
+			foreach (NetworkConnection nc in NetworkServer.connections) 
+			{
+				// create a network message (apparently needed to add a player?)
+				NetworkMessage test = new NetworkMessage();
+				test.chosenClass = index;
+				ClientScene.AddPlayer (nc, 0, test);
+				index++;
+			}
+		}
 	}
+
+
 
 	// override OnClientScneneChanged to be empty - else will get message about connection already being set up
 	public override void OnClientSceneChanged(NetworkConnection conn)
@@ -80,15 +106,11 @@ public class NEWNetworkManagerOverride : NetworkManager {
 		//base.OnClientSceneChanged(conn);
 	}
 
-
-	public override void OnStartHost()
+	public void setPlayer(int i)
 	{
-		index = 0;
-	}
-
-	public override void OnMatchJoined(bool success, string extendedInfo, MatchInfo matchInfo)
-	{
-		index = 1;
+		Debug.Log ("Setting PLayer " + i);
+		index = i;
+		playerPrefab = playerPrefabs [i];
 	}
 
 	#endregion

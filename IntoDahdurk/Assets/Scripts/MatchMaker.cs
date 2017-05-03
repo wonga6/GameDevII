@@ -62,6 +62,7 @@ public class MatchMaker : MonoBehaviour {
 			MatchInfo hostInfo = MI;
 			NetworkServer.Listen (hostInfo, 9000);
 			matchInfo = MI;
+			networkManager.setPlayer (0);
 			networkManager.StartHost (hostInfo);
 		} else 
 		{
@@ -106,6 +107,7 @@ public class MatchMaker : MonoBehaviour {
 			Debug.Log ("Able to Join Match");
 			MatchInfo hostInfo = MI;
 			matchInfo = MI;
+			networkManager.setPlayer (1);
 			networkManager.StartClient (hostInfo);
 		} 
 		else 

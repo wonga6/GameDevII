@@ -472,8 +472,8 @@ PlayerSettings:
     Collab: 0
     ErrorHub: 0
     Hub: 0
-    UNet: 0
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+    UNet: 1
+  cloudProjectId: ae223707-f38b-4730-a116-43c59be2dd0e
+  projectName: IntoDahdurk
+  organizationId: robert-eldredge
   cloudEnabled: 0
