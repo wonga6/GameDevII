@@ -17,15 +17,23 @@ public class NEWNetworkManagerOverride : NetworkManager {
 	public GameObject[] playerPrefabs;
 	public Vector3[] playerStartPos;
 
+	public static short msg_launch = 4500;
+
 	// PRIVATE VARIABLES
 	int index = 0; // index for which gameobject from plaerPrefabs array to spawn
+	bool isReady = false;
 
 	// SUBCLASSES
 	//subclass for sending network messages
-	public class NetworkMessage : MessageBase
+	/*public class NetworkMessage : MessageBase
 	{
 		public int chosenClass;
-	}
+	}*/
+
+	//public struct LaunchMessage
+	//{
+	//	bool isReady;
+	//}
 
 
 	// FUNCTIONS
@@ -38,6 +46,8 @@ public class NEWNetworkManagerOverride : NetworkManager {
 
 		foreach(GameObject prefab in playerPrefabs)
 			ClientScene.RegisterPrefab (prefab);
+
+
 	}
 
 	// override network manager's OnServerAddPlayer so that multiple player prefabs can be added
@@ -86,18 +96,23 @@ public class NEWNetworkManagerOverride : NetworkManager {
 		if (NetworkServer.connections.Count == 2) 
 		{
 			Debug.Log ("ready to add players");
-			index = 0;
-			foreach (NetworkConnection nc in NetworkServer.connections) 
-			{
-				// create a network message (apparently needed to add a player?)
-				NetworkMessage test = new NetworkMessage();
-				test.chosenClass = index;
-				ClientScene.AddPlayer (nc, 0, test);
-				index++;
-			}
+			//index = 0;
+			//foreach (NetworkConnection nc in NetworkServer.connections) 
+			//{
+				
+
+			//	index++;
+			//}
+			// create a message to send to clients
+			RpcEnterGame();
 		}
 	}
 
+	[ClientRpc]
+	void RpcEnterGame()
+	{
+		ClientScene.AddPlayer (0);
+	}
 
 
 	// override OnClientScneneChanged to be empty - else will get message about connection already being set up

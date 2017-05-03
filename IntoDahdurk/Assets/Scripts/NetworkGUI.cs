@@ -42,11 +42,17 @@ public class NetworkGUI : MonoBehaviour {
 		matchMaker.CreateInternetMatch(password);
 	}
 
-	public void setupJoinGame()
+	public void switchToPasswordView()
 	{
 		startMenu.SetActive(false);
 		joinGamePassword.SetActive(true);
-		matchMaker.FindInternetMatch();
+	}
+
+	public void setupJoinGame(InputField input)
+	{
+		string password = input.text;
+		if(password.Length > 0)
+			matchMaker.FindInternetMatch(password);
 	}
 
 	public void ApplicationQuit()
@@ -99,10 +105,14 @@ public class NetworkGUI : MonoBehaviour {
 		GameObject.Find ("ButtonStartHost").GetComponent<Button> ().onClick.AddListener (setupHost);
 
 		GameObject.Find ("ButtonJoinGame").GetComponent<Button> ().onClick.RemoveAllListeners ();
-		GameObject.Find ("ButtonJoinGame").GetComponent<Button> ().onClick.AddListener (setupJoinGame);
+		GameObject.Find ("ButtonJoinGame").GetComponent<Button> ().onClick.AddListener (switchToPasswordView);
 
 		GameObject.Find ("ButtonQuitGame").GetComponent<Button> ().onClick.RemoveAllListeners ();
 		GameObject.Find ("ButtonQuitGame").GetComponent<Button> ().onClick.AddListener (ApplicationQuit);
+
+		InputField input = GameObject.Find ("PasswordEntryBox").GetComponent<InputField> ();
+		input.onEndEdit.RemoveAllListeners ();
+		input.onEndEdit.AddListener ( delegate {setupJoinGame(input); } );
 
 		startMenu = GameObject.Find ("StartMenu");
 		startMenu.SetActive (true);

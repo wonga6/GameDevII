@@ -11,6 +11,7 @@ public class MatchMaker : MonoBehaviour {
 
 	private NEWNetworkManagerOverride networkManager;
 	private MatchInfo matchInfo;
+	private string password = "";
 
 	void Start()
 	{
@@ -72,9 +73,10 @@ public class MatchMaker : MonoBehaviour {
 
 
 	//finds a match for client
-	public void FindInternetMatch()
+	public void FindInternetMatch(string _password)
 	{
-		networkManager.matchMaker.ListMatches (0, 10, "", true, 0, 0, OnInternetMatchList);
+		password = _password;
+		networkManager.matchMaker.ListMatches (0, 20, "", true, 0, 0, OnInternetMatchList);
 	}
 
 	void OnInternetMatchList(bool success, string extendedInfo, List<MatchInfoSnapshot> matches)
@@ -84,8 +86,16 @@ public class MatchMaker : MonoBehaviour {
 			if (matches.Count != 0)
 			{
 				Debug.Log ("List was returned");
-				//join last server(Temporary)
-				networkManager.matchMaker.JoinMatch(matches[matches.Count-1].networkId, "", "", "", 0, 0, OnJoinInternetMatch);
+				//see if one of the matches has the same name as password
+				foreach (MatchInfoSnapshot match in matches) 
+				{
+					if (match.name == password) 
+					{
+						networkManager.matchMaker.JoinMatch (match.networkId, "", "", "", 0, 0, OnJoinInternetMatch);
+						return;
+					}
+				}
+				Debug.Log ("Match was not found");
 			}
 			else
 			{
