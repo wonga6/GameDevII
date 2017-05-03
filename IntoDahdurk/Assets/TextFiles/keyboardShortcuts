@@ -1,0 +1,9 @@
+In the main scene:
+T  -  go through player notes
+Y  -  go through Dolos notes
+E  -  go to "winning" end game scene
+O  -  go to "losing" end game scene
+
+In either end game scene:
+Q (only option)  -  quit game (only works on server lol X'D)
+   - also only way to quit game other than disconnect buttons

@@ -23,3 +23,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GameSceneFinal.unity
   - enabled: 1
     path: Assets/Scenes/BackupScene.unity
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
