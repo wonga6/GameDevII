@@ -21,7 +21,6 @@ public class BuildMaze : MonoBehaviour {
 	//if index=0, populates visible walls at player 1 positions and invisible walls at player 2 positions
 	//if index=1, invert it
 	public void SetWalls(int index){
-		Debug.Log ("Building for" + index);
 		if (index == 0) {
 			for (int i = 0; i < Player1WallPos.Length; i++) {
 				Instantiate (wallPrefab, Player1WallPos [i], Quaternion.Euler (0f, Player1WallRots [i], 0f));

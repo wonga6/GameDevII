@@ -9,11 +9,24 @@ public class NetworkGUI : MonoBehaviour {
 	private MatchMaker matchMaker;
 	private GameObject startMenu;
 	private GameObject waitForClient;
+	private GameObject joinGamePassword;
+	private GameObject disconnectScreen;
 
 	void Start()
 	{
 		networkManager = GetComponent<NEWNetworkManagerOverride> ();
 		matchMaker = GetComponent<MatchMaker> ();
+	}
+
+	void Update()
+	{
+		if (SceneManager.GetActiveScene ().name != "Lobby" && Input.GetKeyDown (KeyCode.Escape)) 
+		{
+			if (disconnectScreen.activeInHierarchy)
+				disconnectScreen.SetActive (false);
+			else
+				disconnectScreen.SetActive (true);
+		}
 	}
 
 
@@ -31,8 +44,14 @@ public class NetworkGUI : MonoBehaviour {
 
 	public void setupJoinGame()
 	{
-		Debug.Log ("setupJinGame");
+		startMenu.SetActive(false);
+		joinGamePassword.SetActive(true);
 		matchMaker.FindInternetMatch();
+	}
+
+	public void ApplicationQuit()
+	{
+		Application.Quit ();
 	}
 
 
@@ -62,7 +81,7 @@ public class NetworkGUI : MonoBehaviour {
 		
 	void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 	{
-		if (scene.buildIndex == 0) {
+		if (scene.name == "Lobby") {
 			StartCoroutine (setupStartMenuButtons ());
 		} 
 		else 
@@ -75,20 +94,31 @@ public class NetworkGUI : MonoBehaviour {
 	IEnumerator setupStartMenuButtons()
 	{
 		yield return new WaitForSeconds (0.3f);
+
 		GameObject.Find ("ButtonStartHost").GetComponent<Button> ().onClick.RemoveAllListeners ();
 		GameObject.Find ("ButtonStartHost").GetComponent<Button> ().onClick.AddListener (setupHost);
 
 		GameObject.Find ("ButtonJoinGame").GetComponent<Button> ().onClick.RemoveAllListeners ();
 		GameObject.Find ("ButtonJoinGame").GetComponent<Button> ().onClick.AddListener (setupJoinGame);
 
+		GameObject.Find ("ButtonQuitGame").GetComponent<Button> ().onClick.RemoveAllListeners ();
+		GameObject.Find ("ButtonQuitGame").GetComponent<Button> ().onClick.AddListener (ApplicationQuit);
+
 		startMenu = GameObject.Find ("StartMenu");
+		startMenu.SetActive (true);
 		waitForClient = GameObject.Find ("WaitForClient");
 		waitForClient.SetActive (false);
+		joinGamePassword = GameObject.Find ("JoinGamePassword");
+		joinGamePassword.SetActive (false);
+
+		yield return new WaitForSeconds (0.3f);
 	}
 
 	void setupGameSceneButtons()
 	{
 		GameObject.Find ("ButtonDisconnect").GetComponent<Button> ().onClick.RemoveAllListeners ();
 		GameObject.Find ("ButtonDisconnect").GetComponent<Button> ().onClick.AddListener (matchMaker.disconnectPlayer);
+		disconnectScreen = GameObject.Find ("DisconnectScreen");
+		disconnectScreen.SetActive (false);
 	}
 }
