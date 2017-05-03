@@ -7,6 +7,7 @@ public class End : NetworkBehaviour {
 
 	// PRIVATE VARIABLES
 	private GameObject teleportPoint;
+	private GameObject minotaurPoint;
 	private GameObject gameOver;
 
 	// FUNCTIONS
@@ -15,6 +16,7 @@ public class End : NetworkBehaviour {
 	// Use this for initialization
 	void Start () {
 		teleportPoint = GameObject.Find ("TeleportPoint");	
+		minotaurPoint = GameObject.Find ("MinotaurPoint");
 		gameOver = GameObject.Find ("EndGameManager");
 	}
 	
@@ -25,6 +27,14 @@ public class End : NetworkBehaviour {
 		if(Input.GetKeyDown(KeyCode.E)) {
 			Vector3 newPosition = new Vector3 (teleportPoint.transform.position.x, 
 				transform.position.y, teleportPoint.transform.position.z);
+			transform.position = newPosition;
+		}
+
+		// other keyboard shortcut to teleport to where minotaur is
+		// again for easy testing and showing purposes ideally removed when not needed
+		if(Input.GetKeyDown(KeyCode.M)) {
+			Vector3 newPosition = new Vector3 (minotaurPoint.transform.position.x, 
+				                      transform.position.y, minotaurPoint.transform.position.z);
 			transform.position = newPosition;
 		}
 	}
