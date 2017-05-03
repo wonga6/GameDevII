@@ -8,6 +8,9 @@ TagManager:
   - AI_Path
   - FakeWalls
   - noteTrigger
+  - tablet
+  - dolosTrigger
+  - fake
   layers:
   - Default
   - TransparentFX

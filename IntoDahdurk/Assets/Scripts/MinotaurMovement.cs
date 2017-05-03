@@ -14,7 +14,7 @@ public class MinotaurMovement: NetworkBehaviour {
 	public float pathPntRad = 1.0f; // distance from path pt at which
 	                                // pt can be considered reached
 
-	public float speed = 5.0f;
+	public float speed = 4.3f;
 
 	// chasing player variables (public)
 	public List<GameObject> players;
@@ -24,7 +24,6 @@ public class MinotaurMovement: NetworkBehaviour {
 	// path following variables (private)
 	int currentNode = 0;
 	bool goBackwards = false;
-
 
 	// FUNCTIONS
 
@@ -39,28 +38,12 @@ public class MinotaurMovement: NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		/*
-		 * Working pathfinding if my implementation doesn't work as expected to
-		Vector3 dir = path [currentNode].position - transform.position;
-
-		transform.position += Vector3.Normalize(dir) * Time.deltaTime * speed;
-
-		if(dir.magnitude <= pathPntRad) {
-			currentNode++;
-
-			if (currentNode >= path.Count) {
-				currentNode = 0;
-			}
-		}
-		*/
 
 		pathFinding ();
 	}
 
-	void OnTriggerEnter(Collider col) {
-		
-	}
-
+	// draw path nodes in scene view when minotaur is in scene for easier
+	// path building
 	void OnDrawGizmos() {
 		for(int i = 0; i < path.Count; i++) {
 			if(path[i] != null) {
@@ -114,6 +97,7 @@ public class MinotaurMovement: NetworkBehaviour {
 	}
 	*/
 
+	// hacky path finding
 	private void pathFinding() {
 		if (isServer) {
 
